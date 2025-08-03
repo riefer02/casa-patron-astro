@@ -1,0 +1,98 @@
+---
+import SEO from "../components/SEO.astro";
+import "../styles/global.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
+  type?: "website" | "article";
+  schemaMarkup?: object;
+  noIndex?: boolean;
+  heroContent?: any;
+  heroImg?: any;
+  mobileHeroImg?: any;
+  bodyClasses?: string;
+}
+
+const {
+  title,
+  description = "Casa Patron vacation rental in Alto, NM near Ruidoso & Ski Apache",
+  keywords = [],
+  image,
+  type = "website",
+  schemaMarkup,
+  noIndex = false,
+  heroContent,
+  heroImg,
+  mobileHeroImg,
+  bodyClasses = "",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <SEO
+      title={title}
+      description={description}
+      keywords={keywords}
+      image={image}
+      type={type}
+      schemaMarkup={schemaMarkup}
+      noIndex={noIndex}
+    />
+
+    <!-- Preload critical fonts if needed -->
+    <!-- <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin /> -->
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+  </head>
+  <body class={bodyClasses}>
+    <div class="relative overflow-hidden">
+      <!-- Header component will go here -->
+      <div id="header-placeholder">
+        <header class="bg-secondary text-white p-4">
+          <h1 class="text-2xl font-bold">Casa Patron</h1>
+          <nav>
+            <a href="/" class="text-primary hover:text-tertiary mx-2">Home</a>
+            <a href="/docs/" class="text-primary hover:text-tertiary mx-2"
+              >Docs</a
+            >
+            <a href="/posts/" class="text-primary hover:text-tertiary mx-2"
+              >Blog</a
+            >
+            <a href="/contact-us/" class="text-primary hover:text-tertiary mx-2"
+              >Contact</a
+            >
+          </nav>
+        </header>
+      </div>
+
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 z-20 relative min-h-[85vh]">
+        <slot />
+      </main>
+
+      <!-- Footer component will go here -->
+      <footer class="bg-grey-neutral text-white p-8 mt-12">
+        <div class="max-w-7xl mx-auto text-center">
+          <p>
+            &copy; {new Date().getFullYear()} Casa Patron. All rights reserved.
+          </p>
+          <p class="text-primary">
+            Alto, New Mexico • Near Ruidoso & Ski Apache
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Back to top button will be added as React island -->
+    <!-- <BackToTopButton client:load /> -->
+  </body>
+</html>

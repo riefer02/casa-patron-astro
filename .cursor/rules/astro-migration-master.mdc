@@ -1,0 +1,136 @@
+---
+alwaysApply: true
+description: "Master guide for Gatsby to Astro migration strategy for Casa Patron"
+---
+
+# Casa Patron Gatsby to Astro Migration Guide
+
+## 🎯 Migration Overview
+Migrating from Gatsby 5.3.3 + React 18 + Tailwind v3 to Astro + Tailwind v4 with minimal React islands.
+
+### 🏗️ Project Structure Strategy
+```
+casa-patron-astro/
+├── src/
+│   ├── layouts/           # Layout components (.astro)
+│   ├── components/        # Astro components (.astro)
+│   ├── components/react/  # React islands (interactive only)
+│   ├── pages/            # Route pages (.astro)
+│   ├── content/          # Content collections
+│   │   ├── docs/         # Documentation content
+│   │   └── posts/        # Blog posts
+│   ├── assets/           # Optimized images/assets
+│   ├── styles/           # Global CSS/Tailwind
+│   └── utils/            # Helper functions
+├── public/               # Static assets
+└── astro.config.mjs     # Astro configuration
+```
+
+## 🚦 Migration Principles
+
+### 1. **Static-First Approach**
+- Default to `.astro` components for all static content
+- Use React islands ONLY for truly interactive features
+- Leverage Astro's superior SSG performance
+
+### 2. **Content Collections Priority**
+- Migrate all MDX content to Astro content collections
+- Use proper TypeScript schemas for content validation
+- Maintain existing frontmatter structure
+
+### 3. **Image Optimization**
+- Replace `gatsby-plugin-image` with Astro's `<Image />` component
+- Move from `src/images/` to `src/assets/` structure
+- Maintain responsive image loading
+
+### 4. **SEO Preservation**
+- Maintain all existing schema markup
+- Preserve meta tags and Open Graph data
+- Keep current sitemap structure
+
+## 🎨 Design System Evolution
+
+### Brand Colors (Preserve Existing)
+```css
+--color-primary: #FEE43A;     /* Casa Patron Yellow */
+--color-secondary: #1C68CB;   /* Casa Patron Blue */
+--color-tertiary: #FF715B;    /* Casa Patron Orange */
+--color-grey-neutral: #273240; /* Dark Grey */
+--color-success: #28D679;     /* Green */
+```
+
+### Component Architecture
+```
+BaseLayout.astro           → Main layout wrapper
+├── Header.astro          → Site header with navigation
+├── Hero.astro            → Hero section component
+├── Footer.astro          → Site footer
+└── SEO.astro             → SEO meta component
+
+Components/
+├── JumboPanel.astro      → Content panels
+├── ImageGallery.astro    → Image gallery
+├── LocalAttractions.astro → Attractions cards
+├── Spacer.astro          → Layout spacer utility
+└── react/
+    └── BackToTopButton.jsx → Interactive scroll button
+```
+
+## 🛠️ Technology Decisions
+
+### Core Stack
+- **Framework**: Astro 4.x (latest stable)
+- **Styling**: Tailwind CSS v4 with @tailwindcss/vite
+- **Content**: Astro Content Collections
+- **Images**: Astro Assets with optimization
+- **Interactive**: React 18 islands where needed
+- **Performance**: Partytown for third-party scripts
+
+### Key Astro Integrations
+```js
+// astro.config.mjs essentials
+- @astrojs/react (for islands)
+- @astrojs/tailwind (if needed for v4)
+- @astrojs/sitemap
+- @astrojs/partytown
+```
+
+## 📋 Migration Checklist Reference
+
+### Phase 1: Foundation
+- [ ] Create new Astro project
+- [ ] Configure Tailwind CSS v4
+- [ ] Set up content collections
+- [ ] Create base layout system
+
+### Phase 2: Content & Assets
+- [ ] Migrate image assets
+- [ ] Convert MDX content
+- [ ] Set up dynamic routing
+- [ ] Implement SEO system
+
+### Phase 3: Components
+- [ ] Convert static components to .astro
+- [ ] Identify React islands needed
+- [ ] Implement interactive features
+- [ ] Test component functionality
+
+### Phase 4: Optimization
+- [ ] Performance optimization
+- [ ] SEO validation
+- [ ] Accessibility testing
+- [ ] Cross-browser testing
+
+## 🎯 Success Metrics
+- Lighthouse score 95+ on all pages
+- Core Web Vitals in green
+- Maintain SEO rankings
+- Faster build times than Gatsby
+- Superior developer experience
+
+## 🚨 Critical Considerations
+- Preserve all existing URLs and redirects
+- Maintain schema markup for lodging business
+- Keep custom animations (spin-words keyframe)
+- Ensure mobile responsiveness parity
+- Test booking flow thoroughly

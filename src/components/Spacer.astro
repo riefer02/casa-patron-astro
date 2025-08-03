@@ -1,0 +1,13 @@
+---
+export interface Props {
+  sizeY?: number;
+  className?: string;
+}
+
+const { sizeY = 4, className = "" } = Astro.props;
+
+// For sizeY 1, use smaller spacing to match original
+const spacerClass = sizeY === 1 ? "py-1" : `py-${sizeY}`;
+---
+
+<div class={`${spacerClass} ${className}`}></div>

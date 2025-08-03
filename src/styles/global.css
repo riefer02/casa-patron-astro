@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Casa Patron Theme Variables */
+@theme {
+  /* Brand Colors */
+  --color-primary: #fee43a;
+  --color-secondary: #1c68cb;
+  --color-tertiary: #ff715b;
+  --color-grey-neutral: #273240;
+  --color-success: #28d679;
+
+  /* Secondary variants for existing animations */
+  --color-secondary-red: theme(--color-primary);
+  --color-secondary-green: theme(--color-success);
+  --color-secondary-blue: theme(--color-tertiary);
+
+  /* Custom animations */
+  --animate-spin-words: spin-words 8s linear infinite;
+
+  /* Text shadows */
+  --shadow-text: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-behavior: smooth;
+  color: var(--color-grey-neutral);
+}
+
+/* Custom utilities */
+@utility text-shadow {
+  text-shadow: 2px 2px 4px rgba(39, 50, 64, 0.3);
+}
+
+@utility text-shadow-md {
+  text-shadow: 4px 4px 8px rgba(39, 50, 64, 0.3);
+}
+
+@utility text-shadow-lg {
+  text-shadow: 15px 15px 30px rgba(39, 50, 64, 0.3);
+}
+
+@utility text-shadow-none {
+  text-shadow: none;
+}
+
+.logo-shadow {
+  -webkit-filter: drop-shadow(2px 2px 4px rgba(39, 50, 64, 0.3));
+  filter: drop-shadow(2px 2px 4px rgba(39, 50, 64, 0.3));
+}
+
+/* Custom keyframes */
+@keyframes spin-words {
+  0%,
+  25% {
+    transform: translateY(0%);
+  }
+  33%,
+  58% {
+    transform: translateY(-100%);
+  }
+  66%,
+  91% {
+    transform: translateY(-200%);
+  }
+  100% {
+    transform: translateY(-300%);
+  }
+}
+
+/* Custom utilities */
+@utility text-shadow {
+  text-shadow: var(--shadow-text);
+}
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Preserve important animation */
+.animate-spin-words {
+  animation: var(--animate-spin-words);
+}

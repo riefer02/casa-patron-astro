@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = await getCollection("posts", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = posts.sort((a, b) => b.data.date - a.data.date);
+---
+
+<BaseLayout
+  title="Casa Patron Blog - Latest News & Updates"
+  description="Stay updated with the latest news, updates, and insights about Casa Patron vacation rental in Alto, NM"
+  keywords={["casa patron", "blog", "vacation rental", "alto nm", "news"]}
+>
+
+  <div class="max-w-4xl mx-auto">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-secondary mb-4">Casa Patron Blog</h1>
+      <p class="text-xl text-gray-600">
+        Latest news, updates, and insights about your mountain getaway
+      </p>
+    </header>
+
+    <div class="space-y-8">
+      {
+        sortedPosts.map((post) => (
+          <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+            <header class="mb-4">
+              <h2 class="text-2xl font-bold text-secondary mb-2">
+                <a
+                  href={`/posts/${post.slug}/`}
+                  class="hover:text-tertiary transition-colors"
+                >
+                  {post.data.title}
+                </a>
+              </h2>
+              <div class="flex items-center text-gray-600 text-sm">
+                <span>By {post.data.author}</span>
+                <span class="mx-2">•</span>
+                <time datetime={post.data.date.toISOString()}>
+                  {post.data.date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+                <span class="mx-2">•</span>
+                <span class="bg-secondary text-white px-2 py-1 rounded text-xs">
+                  {post.data.category}
+                </span>
+              </div>
+            </header>
+
+            <p class="text-gray-700 mb-4">{post.data.description}</p>
+
+            <div class="flex items-center justify-between">
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.slice(0, 3).map((tag) => (
+                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={`/posts/${post.slug}/`}
+                class="text-secondary hover:text-tertiary font-medium text-sm"
+              >
+                Read More →
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    {
+      sortedPosts.length === 0 && (
+        <div class="text-center py-12">
+          <h3 class="text-xl font-bold text-gray-700 mb-4">No posts yet</h3>
+          <p class="text-gray-600">Check back soon for updates and insights!</p>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const docs = await getCollection("docs", ({ data }) => {
+    return data.draft !== true;
+  });
+
+  return docs.map((doc) => ({
+    params: { slug: doc.slug },
+    props: { doc },
+  }));
+}
+
+const { doc } = Astro.props;
+const { Content, headings } = await doc.render();
+
+// Sort docs by order for navigation
+const allDocs = await getCollection("docs");
+const sortedDocs = allDocs
+  .filter((d) => !d.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const currentIndex = sortedDocs.findIndex((d) => d.slug === doc.slug);
+const prevDoc = currentIndex > 0 ? sortedDocs[currentIndex - 1] : null;
+const nextDoc =
+  currentIndex < sortedDocs.length - 1 ? sortedDocs[currentIndex + 1] : null;
+---
+
+<BaseLayout 
+  title={doc.data.title} 
+  description={doc.data.description}
+  keywords={doc.data.tags}
+  type="article"
+>
+
+  <article class="prose lg:prose-xl mx-auto">
+    <!-- Table of Contents -->
+    {
+      headings.length > 0 && (
+        <nav class="toc bg-gray-50 p-4 rounded-lg mb-8">
+          <h3 class="text-lg font-bold mb-4">Table of Contents</h3>
+          <ul class="space-y-2">
+            {headings.map((heading) => (
+              <li style={`margin-left: ${(heading.depth - 1) * 1}rem`}>
+                <a
+                  href={`#${heading.slug}`}
+                  class="text-secondary hover:text-tertiary"
+                >
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <!-- Document Content -->
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-secondary mb-4">{doc.data.title}</h1>
+      <div class="text-gray-600 mb-4">
+        By {doc.data.author} •
+        <time datetime={doc.data.date.toISOString()}>
+          {
+            doc.data.date.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+      </div>
+    </header>
+
+    <Content />
+
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center mt-12 pt-8 border-t">
+      {
+        prevDoc ? (
+          <a
+            href={`/docs/${prevDoc.slug}/`}
+            class="flex items-center text-secondary hover:text-tertiary"
+          >
+            ← {prevDoc.data.title}
+          </a>
+        ) : (
+          <div />
+        )
+      }
+
+      {
+        nextDoc ? (
+          <a
+            href={`/docs/${nextDoc.slug}/`}
+            class="flex items-center text-secondary hover:text-tertiary"
+          >
+            {nextDoc.data.title} →
+          </a>
+        ) : (
+          <div />
+        )
+      }
+    </nav>
+  </article>
+</BaseLayout>

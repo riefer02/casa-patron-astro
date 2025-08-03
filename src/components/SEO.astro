@@ -1,0 +1,71 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
+  url?: string;
+  type?: "website" | "article";
+  schemaMarkup?: object;
+  noIndex?: boolean;
+}
+
+const {
+  title = "Casa Patron: Short Term Vacation Rental Home in Alto, NM",
+  description = "Escape to the stunning mountains of Alto, NM and stay at Casa Patron, a beautiful short term vacation rental home located near Ruidoso.",
+  keywords = [],
+  image = "/cp-og-image.jpg",
+  url = Astro.url.href,
+  type = "website",
+  schemaMarkup,
+  noIndex = false,
+} = Astro.props;
+
+const canonicalUrl = new URL(url, Astro.site).href;
+const imageUrl = new URL(image, Astro.site).href;
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+{keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
+<link rel="canonical" href={canonicalUrl} />
+{noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:site_name" content="Casa Patron" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalUrl} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageUrl} />
+
+<!-- Additional SEO Meta -->
+<meta name="author" content="Casa Patron" />
+<meta name="copyright" content="Casa Patron" />
+<meta name="language" content="English" />
+<meta name="revisit-after" content="7 days" />
+
+<!-- Geo Meta for Local Business -->
+<meta name="geo.region" content="US-NM" />
+<meta name="geo.placename" content="Alto, New Mexico" />
+<meta name="geo.position" content="33.41047791700064;-105.6845322600749" />
+<meta name="ICBM" content="33.41047791700064, -105.6845322600749" />
+
+<!-- Schema Markup -->
+{
+  schemaMarkup && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(schemaMarkup)}
+    />
+  )
+}

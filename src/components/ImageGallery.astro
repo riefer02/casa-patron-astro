@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+  images: any[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+  {
+    images.map((image, index) => (
+      <div key={index} class="rounded-3xl overflow-hidden shadow-md">
+        <Image
+          src={image}
+          alt={`Casa Patron gallery image ${index + 1}`}
+          width={600}
+          height={400}
+          quality={80}
+          format="webp"
+          class="rounded-3xl"
+          loading="lazy"
+        />
+      </div>
+    ))
+  }
+</div>

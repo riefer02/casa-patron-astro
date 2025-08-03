@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+  content: {
+    image: { imageSrc: any; imageAlt: string };
+    headline: { spanText: string; spanColor: string; headerText: string };
+    paragraph: { paragraphText: string };
+  };
+}
+
+const { content } = Astro.props;
+const { image, headline, paragraph } = content;
+---
+
+<section class="flex flex-col lg:flex-row items-center gap-8 py-12">
+  <div class="lg:w-1/2">
+    {
+      typeof image.imageSrc === "string" ? (
+        <img
+          src={image.imageSrc}
+          alt={image.imageAlt}
+          class="rounded-lg shadow-lg w-full h-auto"
+          loading="lazy"
+        />
+      ) : (
+        <Image
+          src={image.imageSrc}
+          alt={image.imageAlt}
+          class="rounded-lg shadow-lg"
+          width={600}
+          height={400}
+          quality={80}
+          format="webp"
+        />
+      )
+    }
+  </div>
+  <div class="lg:w-1/2">
+    <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+      <span style={`color: ${headline.spanColor}`}>
+        {headline.spanText}
+      </span>
+      {" " + headline.headerText}
+    </h2>
+    <p class="text-lg text-gray-700">
+      {paragraph.paragraphText}
+    </p>
+  </div>
+</section>

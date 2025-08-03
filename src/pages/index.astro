@@ -1,16 +1,352 @@
 ---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import JumboPanel from "../components/JumboPanel.astro";
+import ImageGallery from "../components/ImageGallery.astro";
+import Spacer from "../components/Spacer.astro";
+import BackToTopButton from "../components/react/BackToTopButton.jsx";
+import LocalAttractions from "../components/react/LocalAttractions.jsx";
 
+// Import images
+import casaPatronBirdImg from "../assets/cp-mural.jpg";
+import terraceSummerImg from "../assets/cp-terrace-summer.jpg";
+import greatRoomImg from "../assets/cp-great-room.jpg";
+import winterTerraceImg from "../assets/cp-terrace-winter.jpg";
+
+// Gallery images - Set 1
+import masterSuiteImg from "../assets/cp-master-suite-2.jpg";
+import mountainViewImg from "../assets/cp-mountain-view.jpg";
+import blueBuildingImg from "../assets/cp-blue-building.jpg";
+import kitchenOneImg from "../assets/cp-kitchen-1.jpg";
+import greatRoomOfficeImg from "../assets/cp-great-room-office.jpg";
+import valleyImg from "../assets/cp-valley.jpg";
+import suiteChrisImg from "../assets/cp-chris-suite.jpg";
+import hotTubeImg from "../assets/cp-hot-tube.jpg";
+import birdCageNookImg from "../assets/cp-bird-cage-nook.jpg";
+import mountainAscentImg from "../assets/cp-mountain-ascent.jpg";
+import bienvenidosImg from "../assets/cp-bienvenidos.jpg";
+import kitchenTwoImg from "../assets/cp-kitchen-2.jpg";
+
+// Gallery images - Set 2
+import whiteSandsImg from "../assets/cp-white-sands.jpg";
+import greatRoomChairImg from "../assets/cp-great-room-chair.jpg";
+import ladyInRuinsImg from "../assets/cp-lady-in-ruins.jpg";
+import singleBunksImg from "../assets/cp-single-bunks.jpg";
+import terraceSummerGamesImg from "../assets/cp-terrace-summer-games.jpg";
+import twinBunkImg from "../assets/cp-twin-bunk.jpg";
+import greatRoom2Img from "../assets/cp-great-room-2.jpg";
+import mapImg from "../assets/cp-mountain-map.jpg";
+import alexSuiteImg from "../assets/cp-alex-suite.jpg";
+import livingRoomBedImg from "../assets/cp-living-room-bed.jpg";
+import gardenMonkImg from "../assets/cp-garden-monk.jpg";
+import mountainView2Img from "../assets/cp-mountain-view-2.jpg";
+
+const title =
+  "Casa Patron: Short Term Vacation Rental Home in Alto, NM Near Ruidoso & Ski Apache";
+const description =
+  "Escape to the stunning mountains of Alto, NM and stay at Casa Patron, a beautiful short term vacation rental home located near Ruidoso. Perfect for large parties near Ski Apache.";
+
+const keywords = [
+  "vacation rental",
+  "new mexico",
+  "alto",
+  "ski apache",
+  "ruidoso",
+  "retreat",
+  "casa patron",
+  "mountain cabin",
+  "family friendly",
+];
+
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: "Casa Patron",
+  description: description,
+  image: "https://casapatronalto.com/cp-mural.jpg",
+  telephone: "+1-817-223-0272",
+  email: "valerie@casapatronalto.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "176 Neill Rd",
+    addressLocality: "Alto",
+    addressRegion: "NM",
+    postalCode: "88312",
+    addressCountry: "US",
+  },
+  priceRange: "$240-$900 per night",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 33.41047791700064,
+    longitude: -105.6845322600749,
+  },
+  url: "https://casapatronalto.com/",
+  sameAs: ["http://www.instagram.com/casapatronalto"],
+  amenityFeature: [
+    "Free parking",
+    "Free WiFi",
+    "Great room",
+    "Ski closet",
+    "Air conditioning",
+    "Hot tub",
+    "Cable TV",
+    "Kitchen",
+    "Summer games",
+    "Patio",
+  ],
+};
+
+const panels = [
+  {
+    image: {
+      imageSrc: casaPatronBirdImg,
+      imageAlt:
+        "The Casa Patron mural, a black bird painted over a yellow background.",
+    },
+    headline: {
+      spanText: "Experience",
+      spanColor: "#1C68CB",
+      headerText: "New Mexico",
+    },
+    paragraph: {
+      paragraphText:
+        "Relax and unwind in the stunning Casa Patron cabin, located near Ski Apache in Alto, NM. Experience the magic of the mountains from the comfort of a high occupancy modern cabin.",
+    },
+  },
+  {
+    image: {
+      imageSrc: terraceSummerImg,
+      imageAlt: "A view of the valley from the back patio.",
+    },
+    headline: {
+      spanText: "Magic",
+      spanColor: "#1C68CB",
+      headerText: "of the Mountains",
+    },
+    paragraph: {
+      paragraphText:
+        "Experience the beauty of nature at our vacation destination in Alto, NM. From wildflowers to pine forests, there's something for everyone to enjoy.",
+    },
+  },
+  {
+    image: {
+      imageSrc: greatRoomImg,
+      imageAlt:
+        "A scene of the great room with furniture, pillows, games, and a tv.",
+    },
+    headline: {
+      spanText: "Relax",
+      spanColor: "#1C68CB",
+      headerText: "and Unwind",
+    },
+    paragraph: {
+      paragraphText:
+        "Gather with friends and family in our spacious great room, complete with plenty of seating and a top-of-the-line entertainment system. The perfect spot for movie nights or game nights.",
+    },
+  },
+  {
+    image: {
+      imageSrc: winterTerraceImg,
+      imageAlt: "The valley covered in snow on a winter day.",
+    },
+    headline: {
+      spanText: "Create",
+      spanColor: "#1C68CB",
+      headerText: "Memories",
+    },
+    paragraph: {
+      paragraphText:
+        "Discover unforgettable experiences at our vacation destination. From breathtaking views to top-notch amenities, you'll create lasting memories here.",
+    },
+  },
+];
+
+const imagesGallery = [
+  [
+    masterSuiteImg,
+    mountainViewImg,
+    blueBuildingImg,
+    kitchenOneImg,
+    greatRoomOfficeImg,
+    valleyImg,
+    suiteChrisImg,
+    hotTubeImg,
+    birdCageNookImg,
+    mountainAscentImg,
+    bienvenidosImg,
+    kitchenTwoImg,
+  ],
+  [
+    whiteSandsImg,
+    greatRoomChairImg,
+    ladyInRuinsImg,
+    singleBunksImg,
+    terraceSummerGamesImg,
+    twinBunkImg,
+    greatRoom2Img,
+    mapImg,
+    alexSuiteImg,
+    livingRoomBedImg,
+    gardenMonkImg,
+    mountainView2Img,
+  ],
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  schemaMarkup={schemaMarkup}
+  type="website"
+>
+  <div id="what-is-casa-patron"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-section py-20 text-left">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="-mt-[30%] sm:-mt-0">
+        <h1 class="hidden">
+          Casa Patron: Short Term Vacation Rental Home in Alto, NM Near Ruidoso
+          & Ski Apache
+        </h1>
+        <a href="#what-is-casa-patron" class="mb-3 sm:mb-4 block">
+          <div
+            class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
+          >
+            Let's
+            <div
+              class="inline-flex pl-2 sm:pl-3 lg:pl-4 overflow-hidden w-[70%] mx-auto"
+            >
+              <div
+                class="flex-col h-full relative inline-flex animate-spin-words"
+              >
+                <span class="opacity-0 text-primary">Ski.</span>
+                <span class="absolute text-primary">Ski</span>
+                <span
+                  class="absolute translate-y-[100%] overflow-hidden text-success"
+                  >Explore</span
+                >
+                <span class="absolute translate-y-[200%] text-tertiary"
+                  >Experience</span
+                >
+                <span class="absolute translate-y-[300%] text-primary">Ski</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="hidden sm:block">
+            <div
+              class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
+            >
+              Alto, New Mexico,
+            </div>
+            <div
+              class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
+            >
+              Casa Patron.
+            </div>
+          </div>
+          <div class="sm:hidden">
+            <div
+              class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
+            >
+              Alto, NM
+            </div>
+            <div
+              class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
+            >
+              Casa Patron
+            </div>
+          </div>
+        </a>
+        <p
+          class="text-shadow block sm:pt-0 font-light sm:text-lg md:text-xl lg:text-2xl text-white max-w-[250px] lg:max-w-sm"
+        >
+          Short-term vacation rental, located near Ruidoso & Ski Apache.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel Sections -->
+  {
+    panels.map((content, index) => (
+      <div key={index}>
+        <Spacer />
+        <Spacer className="block sm:hidden" />
+        <JumboPanel content={content} />
+      </div>
+    ))
+  }
+
+  <Spacer className="hidden sm:block md:hidden" />
+  <Spacer />
+  <Spacer className="block sm:hidden" />
+
+  <!-- First Image Gallery -->
+  <ImageGallery images={imagesGallery[0]} />
+
+  <!-- Better spacing like original -->
+  <div class="py-5"></div>
+
+  <!-- Quote Section -->
+  <div
+    class="bg-grey-neutral text-primary py-4 rounded-3xl shadow-md border-2 border-primary border-opacity-80"
+  >
+    <blockquote
+      class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold !leading-[1.9] text-center mx-auto my-6 md:my-10 lg:my-12 px-6 md:px-8 lg:px-10 max-w-7xl"
+    >
+      <p class="mb-6">
+        Unwind and recharge in nature. Casa Patron offers a serene and peaceful
+        getaway from the hustle and bustle of daily life. With comfortable
+        amenities and breathtaking views, you'll have everything you need to
+        relax and rejuvenate.
+      </p>
+    </blockquote>
+  </div>
+
+  <div class="pt-5"></div>
+
+  <Spacer sizeY={1} />
+
+  <!-- Local Attractions Section -->
+  <LocalAttractions client:load />
+
+  <Spacer sizeY={1} />
+
+  <!-- Second Image Gallery -->
+  <ImageGallery images={imagesGallery[1]} />
+
+  <Spacer sizeY={1} />
+
+  <!-- CTA Section -->
+  <div
+    class="flex flex-col items-center justify-center py-8 sm:py-16 max-w-xl mx-auto"
+  >
+    <h2 class="text-3xl sm:text-5xl font-bold mb-6 sm:mb-10">
+      Escape to Casa Patron
+    </h2>
+    <a
+      href="/contact-us/"
+      aria-label="Book Now"
+      class="bg-secondary transition hover:bg-tertiary text-white text-xl sm:text-2xl font-light rounded-full py-2 sm:py-2 px-6 sm:px-6 shadow-md hover:shadow-sm"
+    >
+      Book Now
+    </a>
+  </div>
+
+  <!-- Add BackToTopButton as React Island -->
+  <BackToTopButton client:load />
+</BaseLayout>
+
+<style>
+  .hero-section {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 100%
+    );
+    color: white;
+  }
+</style>
