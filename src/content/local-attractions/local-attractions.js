@@ -69,4 +69,34 @@ export const localAttractions = [
       "Alto Lake is a serene natural area that offers fishing opportunities and scenic nature walks. It's a perfect spot for outdoor enthusiasts.",
     tags: ["fishing", "nature walks"],
   },
-]
+  {
+    name: "Spencer Theater for the Performing Arts",
+    url: "https://spencertheater.com/",
+    description:
+      "Named one of the seven finest theaters in the world, this stunning $22 million venue features world-class performances in theater, music, and dance. The 514-seat hall offers outstanding acoustics and intimate seating, while housing the Southwest's largest private collection of Dale Chihuly glass art open for public viewing.",
+    tags: ["theater", "music", "art", "entertainment", "culture"],
+    location: {
+      address: "108 Spencer Rd, Alto, NM 88312",
+      phone: "(575) 336-4800",
+    },
+    highlights: [
+      "Designed by renowned architect Antoine Predock",
+      "Features permanent Dale Chihuly glass installations",
+      "World-class acoustics in an intimate 514-seat venue",
+      "Year-round programming of Broadway, music, and dance",
+      "Popular destination wedding venue",
+      "Guided tours available Tuesdays and Thursdays at 10 AM",
+    ],
+    chihuly: {
+      description:
+        "Houses the largest private Chihuly collection in the Southwest",
+      pieces: [
+        "Glowing Sunset Tower - 14-foot, 564-piece sculpture in Crystal Lobby",
+        "Indian Paint Brushes - 177-piece sculpture inspired by New Mexico wildflowers",
+        "The Persians - 36-piece display along upper crystal lobby wall",
+        "Cobalt Blue Baskets - Gift from Chihuly to founder Jackie Spencer",
+        "Ruby Sea Garden & Chandelier - Located in exclusive Founder's Room",
+      ],
+    },
+  },
+];
