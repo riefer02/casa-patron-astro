@@ -54,11 +54,12 @@ export default defineConfig({
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
+      filter: (page) => !page.includes('/docs/'), // Exclude internal guest documentation
       customPages: [
         "https://casapatronalto.com/",
         "https://casapatronalto.com/activities/",
         "https://casapatronalto.com/contact-us/",
-        "https://casapatronalto.com/docs/",
+        // "https://casapatronalto.com/docs/", // Removed - internal guest docs not for public indexing
         "https://casapatronalto.com/posts/",
       ],
     }),

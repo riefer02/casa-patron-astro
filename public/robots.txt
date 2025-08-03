@@ -15,3 +15,6 @@ Crawl-delay: 1
 Disallow: /api/
 Disallow: /_astro/
 Disallow: /*.json$
+
+# Block internal guest documentation from crawlers
+Disallow: /docs/
