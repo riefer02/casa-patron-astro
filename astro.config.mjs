@@ -4,11 +4,16 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
 import tailwindcss from "@tailwindcss/vite";
+import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://casapatronalto.com",
   output: "static",
+
+  // For server-side rendering, uncomment the following and change output to "server" or "hybrid":
+  // output: "server", // or "hybrid" for mixed static/SSR
+  // adapter: netlify(),
 
   // Performance optimizations
   build: {
@@ -54,7 +59,7 @@ export default defineConfig({
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
-      filter: (page) => !page.includes('/docs/'), // Exclude internal guest documentation
+      filter: (page) => !page.includes("/docs/"), // Exclude internal guest documentation
       customPages: [
         "https://casapatronalto.com/",
         "https://casapatronalto.com/activities/",
