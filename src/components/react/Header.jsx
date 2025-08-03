@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import logoWhite from "../../assets/cp-bird-logo-white.svg";
 
 // Mobile detection hook (from original Gatsby implementation)
 const useUserAgent = () => {
@@ -220,7 +221,7 @@ export default function Header({
               <div className="flex-shrink-0 flex items-center">
                 <a href="/" className="w-16">
                   <img
-                    src="/src/assets/cp-bird-logo-white.svg"
+                    src={logoWhite.src}
                     alt="Casa Patron bird with flower logo"
                     className="logo-shadow w-16 h-auto"
                     width="64"
