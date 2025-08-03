@@ -48,7 +48,7 @@ export default function Header({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Video source management (following original Gatsby pattern)
+  // Video source management (following latest best practices)
   useEffect(() => {
     if (!userAgent || !videoRef.current) return;
 
@@ -118,12 +118,11 @@ export default function Header({
               loop
               autoPlay
               playsInline
-              preload="auto"
+              preload="none"
               id="hero-video"
               className="hidden sm:block relative z-10 w-full h-full object-cover"
               ref={videoRef}
             >
-              <source src="/cp-hero-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
