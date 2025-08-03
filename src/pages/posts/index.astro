@@ -14,7 +14,6 @@ const sortedPosts = posts.sort((a, b) => b.data.date - a.data.date);
   description="Stay updated with the latest news, updates, and insights about Casa Patron vacation rental in Alto, NM"
   keywords={["casa patron", "blog", "vacation rental", "alto nm", "news"]}
 >
-
   <div class="max-w-4xl mx-auto">
     <header class="text-center mb-12">
       <h1 class="text-4xl font-bold text-secondary mb-4">Casa Patron Blog</h1>
@@ -36,9 +35,9 @@ const sortedPosts = posts.sort((a, b) => b.data.date - a.data.date);
                   {post.data.title}
                 </a>
               </h2>
-              <div class="flex items-center text-gray-600 text-sm">
+              <div class="flex flex-col md:flex-row md:items-center text-gray-600 text-sm gap-2 md:gap-0">
                 <span>By {post.data.author}</span>
-                <span class="mx-2">•</span>
+                <span class="mx-2 hidden md:inline">•</span>
                 <time datetime={post.data.date.toISOString()}>
                   {post.data.date.toLocaleDateString("en-US", {
                     year: "numeric",
@@ -46,8 +45,8 @@ const sortedPosts = posts.sort((a, b) => b.data.date - a.data.date);
                     day: "numeric",
                   })}
                 </time>
-                <span class="mx-2">•</span>
-                <span class="bg-secondary text-white px-2 py-1 rounded text-xs">
+                <span class="mx-2 hidden md:inline">•</span>
+                <span class="bg-secondary text-white px-2 py-1 rounded text-xs w-fit">
                   {post.data.category}
                 </span>
               </div>

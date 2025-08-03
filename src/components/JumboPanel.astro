@@ -13,7 +13,9 @@ const { content } = Astro.props;
 const { image, headline, paragraph } = content;
 ---
 
-<section class="flex flex-col lg:flex-row items-center gap-8 py-12">
+<section
+  class="flex flex-col lg:flex-row items-center gap-6 lg:gap-8 py-6 lg:py-12"
+>
   <div class="lg:w-1/2">
     {
       typeof image.imageSrc === "string" ? (
