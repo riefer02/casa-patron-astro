@@ -25,7 +25,7 @@ const contactSchema = {
     "@type": "LodgingBusiness",
     name: "Casa Patron",
     telephone: "+1-817-223-0272",
-    email: "valerie@casapatronalto.com",
+    // email: "valerie@casapatronalto.com", // Removed to reduce spam exposure
     address: {
       "@type": "PostalAddress",
       streetAddress: "176 Neill Rd",
@@ -108,9 +108,10 @@ const contactSchema = {
               <div>
                 <h3 class="font-bold text-grey-neutral">Email</h3>
                 <a
-                  href="mailto:valerie@casapatronalto.com"
-                  class="text-secondary hover:text-tertiary"
-                  >valerie@casapatronalto.com</a
+                  href="#"
+                  data-email="valerie@casapatronalto.com"
+                  class="text-secondary hover:text-tertiary reveal-email"
+                  >[Click to reveal email]</a
                 >
               </div>
             </div>
@@ -181,8 +182,16 @@ const contactSchema = {
 
           <!-- Email Button -->
           <a
-            href="mailto:valerie@casapatronalto.com?subject=Casa Patron Booking Inquiry&body=Hi! I'm interested in booking Casa Patron. Please let me know about availability and rates.%0D%0A%0D%0APreferred dates:%0D%0ANumber of guests:%0D%0A%0D%0AThank you!"
-            class="block w-full bg-secondary hover:bg-tertiary text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 text-center"
+            href="#"
+            data-email="valerie@casapatronalto.com"
+            data-subject="Casa Patron Booking Inquiry"
+            data-body="Hi! I'm interested in booking Casa Patron. Please let me know about availability and rates.
+
+Preferred dates:
+Number of guests:
+
+Thank you!"
+            class="email-button block w-full bg-secondary hover:bg-tertiary text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 text-center"
           >
             <div class="flex items-center justify-center">
               <svg
@@ -281,3 +290,41 @@ const contactSchema = {
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  // Email protection - reveal on click
+  document.addEventListener("DOMContentLoaded", function () {
+    const emailLinks = document.querySelectorAll("[data-email]");
+
+    emailLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = e.currentTarget as HTMLElement;
+        const email = target.getAttribute("data-email");
+
+        if (!email) return;
+
+        // Handle simple email reveal links
+        if (target.textContent?.includes("[Click to reveal email]")) {
+          target.textContent = email;
+          if (target instanceof HTMLAnchorElement) {
+            target.href = `mailto:${email}`;
+          }
+          return;
+        }
+
+        // Handle email button with subject and body
+        if (target.classList.contains("email-button")) {
+          const subject = target.getAttribute("data-subject") || "";
+          const body = target.getAttribute("data-body") || "";
+          const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoUrl;
+          return;
+        }
+
+        // Default email link
+        window.location.href = `mailto:${email}`;
+      });
+    });
+  });
+</script>
