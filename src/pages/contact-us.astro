@@ -109,7 +109,7 @@ const contactSchema = {
                 <h3 class="font-bold text-grey-neutral">Email</h3>
                 <a
                   href="#"
-                  data-email="valerie@casapatronalto.com"
+                  data-email="dmFsZXJpZUBjYXNhcGF0cm9uYWx0by5jb20="
                   class="text-secondary hover:text-tertiary reveal-email"
                   >[Click to reveal email]</a
                 >
@@ -180,36 +180,61 @@ const contactSchema = {
             love to hear from you!
           </p>
 
-          <!-- Email Button -->
-          <a
-            href="mailto:valerie@casapatronalto.com?subject=Casa%20Patron%20Booking%20Inquiry&body=Hi!%20I'm%20interested%20in%20booking%20Casa%20Patron.%20Please%20let%20me%20know%20about%20availability%20and%20rates.%0A%0APreferred%20dates:%0ANumber%20of%20guests:%0A%0AThank%20you!"
-            data-email="valerie@casapatronalto.com"
-            data-subject="Casa Patron Booking Inquiry"
-            data-body="Hi! I'm interested in booking Casa Patron. Please let me know about availability and rates.
+          <!-- Email Actions -->
+          <div class="space-y-3">
+            <a
+              href="#"
+              data-email="dmFsZXJpZUBjYXNhcGF0cm9uYWx0by5jb20="
+              data-subject="Casa Patron Booking Inquiry"
+              data-body="Hi! I'm interested in booking Casa Patron. Please let me know about availability and rates.
 
 Preferred dates:
 Number of guests:
 
 Thank you!"
-            class="email-button block w-full bg-secondary hover:bg-tertiary text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 text-center"
-          >
-            <div class="flex items-center justify-center">
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
-              Send Email
-            </div>
-          </a>
+              class="email-button block w-full bg-secondary hover:bg-tertiary text-white font-medium py-4 px-6 rounded-lg transition-colors duration-200 text-center"
+            >
+              <div class="flex items-center justify-center">
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                Send Email
+              </div>
+            </a>
+
+            <!-- Copy Email Button -->
+            <button
+              data-email="dmFsZXJpZUBjYXNhcGF0cm9uYWx0by5jb20="
+              class="copy-email-button block w-full bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 text-center"
+            >
+              <div class="flex items-center justify-center">
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                Copy Email Address
+              </div>
+            </button>
+          </div>
 
           <!-- Phone Button -->
           <a
@@ -294,25 +319,71 @@ Thank you!"
 <script>
   // Email protection - reveal on click
   document.addEventListener("DOMContentLoaded", function () {
+    // Function to decode base64 encoded email
+    function decodeEmail(encodedEmail) {
+      try {
+        return atob(encodedEmail);
+      } catch {
+        console.warn("Failed to decode email");
+        return null;
+      }
+    }
+
     const emailLinks = document.querySelectorAll("[data-email]");
 
     emailLinks.forEach((link) => {
       link.addEventListener("click", function (e) {
-        e.preventDefault();
         const target = e.currentTarget;
-        const email = target.getAttribute("data-email");
+        const encodedEmail = target.getAttribute("data-email");
 
-        if (!email) {
+        if (!encodedEmail) {
           console.warn("No email found in data-email attribute");
           return;
         }
 
+        const email = decodeEmail(encodedEmail);
+        if (!email) {
+          console.warn("Failed to decode email address");
+          return;
+        }
+
         try {
+          // Handle copy email button
+          if (target.classList.contains("copy-email-button")) {
+            e.preventDefault();
+            if (navigator.clipboard) {
+              navigator.clipboard
+                .writeText(email)
+                .then(() => {
+                  // Temporarily change button text to show success
+                  const originalText = target.innerHTML;
+                  target.innerHTML = `
+                    <div class="flex items-center justify-center">
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      Email Copied!
+                    </div>
+                  `;
+                  setTimeout(() => {
+                    target.innerHTML = originalText;
+                  }, 2000);
+                })
+                .catch(() => {
+                  alert(`Please email us at: ${email}`);
+                });
+            } else {
+              alert(`Please email us at: ${email}`);
+            }
+            return;
+          }
+
           // Handle simple email reveal links
           if (
             target.textContent &&
             target.textContent.includes("[Click to reveal email]")
           ) {
+            e.preventDefault();
             target.textContent = email;
             if (target.tagName.toLowerCase() === "a") {
               target.href = `mailto:${email}`;
@@ -322,35 +393,13 @@ Thank you!"
 
           // Handle email button with subject and body
           if (target.classList.contains("email-button")) {
+            e.preventDefault();
             const subject = target.getAttribute("data-subject") || "";
             const body = target.getAttribute("data-body") || "";
             const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            // Try opening mailto link - fallback to copying email if blocked
-            try {
-              window.location.href = mailtoUrl;
-            } catch {
-              console.warn(
-                "Failed to open mail client, falling back to copy email"
-              );
-              if (navigator.clipboard) {
-                navigator.clipboard
-                  .writeText(email)
-                  .then(() => {
-                    alert(`Email copied to clipboard: ${email}`);
-                  })
-                  .catch(() => {
-                    alert(`Please email us at: ${email}`);
-                  });
-              } else {
-                alert(`Please email us at: ${email}`);
-              }
-            }
+            window.location.href = mailtoUrl;
             return;
           }
-
-          // Default email link
-          window.location.href = `mailto:${email}`;
         } catch (error) {
           console.error("Error handling email click:", error);
           alert(`Please email us at: ${email}`);

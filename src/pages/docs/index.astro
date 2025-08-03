@@ -14,14 +14,13 @@ const sortedDocs = docs.sort((a, b) => a.data.order - b.data.order);
   description="Complete guide to Casa Patron amenities, house rules, and everything you need to know for your stay"
   keywords={[
     "casa patron",
-    "guest guide", 
+    "guest guide",
     "amenities",
     "house rules",
     "alto nm",
   ]}
   noIndex={true}
 >
-
   <div class="max-w-4xl mx-auto">
     <header class="text-center mb-12">
       <h1 class="text-4xl font-bold text-secondary mb-4">
@@ -63,7 +62,11 @@ const sortedDocs = docs.sort((a, b) => a.data.order - b.data.order);
             📞 Phone: (817) 223-0272
           </p>
           <p class="font-semibold text-grey-neutral">
-            📧 Email: valerie@casapatronalto.com
+            📧 Email: <a
+              href="/contact-us/"
+              class="text-secondary hover:text-tertiary underline"
+              >See contact page</a
+            >
           </p>
         </div>
       </div>
