@@ -89,9 +89,14 @@ export default function Header({
     isHomePage ? "h-screen sm:h-[54vw]" : "h-16"
   }`;
 
-  const navClasses = `fixed top-0 w-full z-50 transition-all duration-300 ${
-    isHomePage && !isScrolled ? "bg-transparent" : "bg-grey-neutral shadow-lg"
-  } ${mobileNavActive ? "bg-grey-neutral" : ""}`;
+  // Simplified background logic for better mobile UX
+  const getNavBackground = () => {
+    if (mobileNavActive) return "bg-grey-neutral shadow-lg";
+    if (isHomePage && !isScrolled) return "bg-transparent";
+    return "bg-grey-neutral shadow-lg";
+  };
+
+  const navClasses = `fixed top-0 w-full z-50 transition-all duration-300 ${getNavBackground()}`;
 
   const handleMobileMenuToggle = () => {
     setMobileNavActive(!mobileNavActive);
@@ -172,7 +177,7 @@ export default function Header({
 
       {/* Navigation */}
       <nav className={navClasses}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full">
           <div className="relative flex items-center justify-between h-16">
             {/* Mobile menu button */}
             <div className="sm:hidden absolute inset-y-0 right-0 flex items-center">
@@ -251,36 +256,54 @@ export default function Header({
         </div>
 
         {/* Mobile Menu */}
-        {mobileNavActive && (
+        <div
+          className={`sm:hidden fixed bg-grey-neutral transition-all duration-200 ease-out z-40 ${
+            mobileNavActive
+              ? "opacity-100 visible pointer-events-auto"
+              : "opacity-0 invisible pointer-events-none"
+          }`}
+          style={{
+            top: "64px",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: "100vw",
+            height: "calc(100vh - 64px)",
+            transform: mobileNavActive ? "translateY(0)" : "translateY(-8px)",
+            margin: 0,
+            padding: 0,
+            border: "none",
+            outline: "none",
+            boxShadow: "none",
+          }}
+        >
           <div
-            className="sm:hidden fixed top-16 left-0 w-full bg-gradient-to-b from-grey-neutral to-gray-800 backdrop-blur-sm transition-all duration-300 ease-in-out z-40 shadow-2xl"
-            style={{ height: "calc(100vh - 4rem)" }}
+            className="px-8 py-8 h-full flex items-center flex-col justify-center space-y-6"
+            style={{ margin: 0, border: "none" }}
           >
-            <div className="p-8 h-full flex items-center flex-col justify-center space-y-6">
-              {navLinks.map((navLink, index) => (
-                <a
-                  key={index}
-                  href={navLink.url}
-                  onClick={handleLinkClick}
-                  className="group relative px-8 py-4 text-xl font-medium text-white bg-gradient-to-r from-secondary to-tertiary rounded-2xl min-w-[85%] text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out border border-primary/20 hover:border-primary/50"
-                >
-                  <span className="relative z-10">{navLink.label}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-success/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </a>
-              ))}
+            {navLinks.map((navLink, index) => (
+              <a
+                key={index}
+                href={navLink.url}
+                onClick={handleLinkClick}
+                className="group relative px-8 py-4 text-xl font-medium text-white bg-gradient-to-r from-secondary to-tertiary rounded-2xl min-w-[85%] text-center shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 ease-out"
+              >
+                <span className="relative z-10">{navLink.label}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-success/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </a>
+            ))}
 
-              {/* Mobile menu footer */}
-              <div className="mt-auto pt-8 text-center">
-                <p className="text-primary/80 text-sm font-light">
-                  Casa Patron • Alto, New Mexico
-                </p>
-                <p className="text-white/60 text-xs mt-1">
-                  Near Ruidoso & Ski Apache
-                </p>
-              </div>
+            {/* Mobile menu footer */}
+            <div className="mt-auto pt-8 text-center">
+              <p className="text-primary/80 text-sm font-light">
+                Casa Patron • Alto, New Mexico
+              </p>
+              <p className="text-white/60 text-xs mt-1">
+                Near Ruidoso & Ski Apache
+              </p>
             </div>
           </div>
-        )}
+        </div>
       </nav>
 
       {/* Hero Content */}
