@@ -1,10 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import JumboPanel from "../components/JumboPanel.astro";
 import ImageGallery from "../components/ImageGallery.astro";
 import Spacer from "../components/Spacer.astro";
-import LocalAttractions from "../components/react/LocalAttractions.jsx";
 
 // Import images
 import casaPatronBirdImg from "../assets/cp-mural.jpg";
@@ -210,7 +208,7 @@ const imagesGallery = [
 
   <!-- Panel Sections -->
   {
-    panels.map((content, index) => (
+    panels.map((content) => (
       <div>
         <Spacer />
         <Spacer class="block sm:hidden" />

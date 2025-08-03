@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import Logo from "../Logo.astro";
 
 // Mobile detection hook (from original Gatsby implementation)
 const useUserAgent = () => {
@@ -52,8 +51,6 @@ export default function Header({
   useEffect(() => {
     if (!userAgent || !videoRef.current) return;
 
-    console.log("Video effect - isMobile:", isMobile, "userAgent:", userAgent);
-
     // Only add video source on desktop (non-mobile)
     if (!isMobile) {
       const video = videoRef.current;
@@ -66,8 +63,6 @@ export default function Header({
       newSource.type = "video/mp4";
       video.appendChild(newSource);
 
-      console.log("✅ Video source added to desktop video element");
-
       // Force video to load and play
       video.load(); // This forces the video to reload with new source
 
@@ -75,14 +70,13 @@ export default function Header({
       video.addEventListener(
         "loadeddata",
         () => {
-          console.log("📹 Video data loaded, attempting autoplay...");
           video
             .play()
             .then(() => {
-              console.log("✅ Video autoplay successful!");
+              // Video autoplay successful
             })
-            .catch((error) => {
-              console.log("⚠️ Autoplay blocked:", error);
+            .catch((_error) => {
+              // Autoplay blocked - silent fail
             });
         },
         { once: true }
@@ -300,7 +294,7 @@ export default function Header({
                 </h1>
                 <a href="#what-is-casa-patron" className="mb-3 sm:mb-4 block">
                   <div className="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white">
-                    Let's
+                    Let&apos;s
                     <div className="inline-flex pl-2 sm:pl-3 lg:pl-4 overflow-hidden w-[70%] mx-auto">
                       <div className="flex-col h-full relative inline-flex animate-spin-words">
                         <span className="opacity-0 text-primary">Ski.</span>

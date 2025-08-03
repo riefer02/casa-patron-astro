@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { localAttractions } from "../../content/local-attractions/local-attractions";
 
 export default function LocalAttractions() {
@@ -20,8 +20,8 @@ export default function LocalAttractions() {
         </h2>
         <p className="text-base text-grey-neutral max-w-3xl mx-auto">
           Discover amazing experiences and attractions near Casa Patron. From
-          outdoor adventures to cultural events, there's something for everyone
-          in Alto and Ruidoso.
+          outdoor adventures to cultural events, there&apos;s something for
+          everyone in Alto and Ruidoso.
         </p>
       </div>
 

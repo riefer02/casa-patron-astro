@@ -10,7 +10,7 @@ const isProduction = import.meta.env.PROD;
     <script type="text/partytown" define:vars={{ analyticsId }}>
       // Initialize dataLayer and gtag function
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){window.dataLayer.push(arguments);}
       
       // Configure analytics
       gtag('js', new Date());
