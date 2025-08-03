@@ -1,0 +1,21 @@
+---
+export interface Props {
+  color?: 'white' | 'grey-blue';
+}
+
+const { color = 'white' } = Astro.props;
+
+// Import the logo assets
+import whiteLogo from '../assets/cp-bird-logo-white.svg';
+import greyLogo from '../assets/cp-bird-logo-grey-blue.svg';
+
+const logoSrc = color === 'grey-blue' ? greyLogo : whiteLogo;
+---
+
+<img
+  src={logoSrc.src}
+  alt="Casa Patron bird with flower logo"
+  class="logo-shadow w-16 h-auto"
+  width="64"
+  height="64"
+/>

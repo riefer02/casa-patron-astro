@@ -4,12 +4,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import JumboPanel from "../components/JumboPanel.astro";
 import ImageGallery from "../components/ImageGallery.astro";
 import Spacer from "../components/Spacer.astro";
-import BackToTopButton from "../components/react/BackToTopButton.jsx";
 import LocalAttractions from "../components/react/LocalAttractions.jsx";
 
 // Import images
 import casaPatronBirdImg from "../assets/cp-mural.jpg";
 import terraceSummerImg from "../assets/cp-terrace-summer.jpg";
+import mobileHeroImg from "../assets/cp-terrace-beauty-winter.jpg";
 import greatRoomImg from "../assets/cp-great-room.jpg";
 import winterTerraceImg from "../assets/cp-terrace-winter.jpg";
 
@@ -95,6 +95,9 @@ const schemaMarkup = {
     "Patio",
   ],
 };
+
+// Hero content flag - the actual content will be generated in the Header component
+const hasHeroContent = true;
 
 const panels = [
   {
@@ -199,90 +202,26 @@ const imagesGallery = [
   keywords={keywords}
   schemaMarkup={schemaMarkup}
   type="website"
+  isHomePage={true}
+  hasHeroContent={hasHeroContent}
+  mobileHeroImg={mobileHeroImg.src}
 >
   <div id="what-is-casa-patron"></div>
-
-  <!-- Hero Section -->
-  <section class="hero-section py-20 text-left">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="-mt-[30%] sm:-mt-0">
-        <h1 class="hidden">
-          Casa Patron: Short Term Vacation Rental Home in Alto, NM Near Ruidoso
-          & Ski Apache
-        </h1>
-        <a href="#what-is-casa-patron" class="mb-3 sm:mb-4 block">
-          <div
-            class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
-          >
-            Let's
-            <div
-              class="inline-flex pl-2 sm:pl-3 lg:pl-4 overflow-hidden w-[70%] mx-auto"
-            >
-              <div
-                class="flex-col h-full relative inline-flex animate-spin-words"
-              >
-                <span class="opacity-0 text-primary">Ski.</span>
-                <span class="absolute text-primary">Ski</span>
-                <span
-                  class="absolute translate-y-[100%] overflow-hidden text-success"
-                  >Explore</span
-                >
-                <span class="absolute translate-y-[200%] text-tertiary"
-                  >Experience</span
-                >
-                <span class="absolute translate-y-[300%] text-primary">Ski</span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="hidden sm:block">
-            <div
-              class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
-            >
-              Alto, New Mexico,
-            </div>
-            <div
-              class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
-            >
-              Casa Patron.
-            </div>
-          </div>
-          <div class="sm:hidden">
-            <div
-              class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
-            >
-              Alto, NM
-            </div>
-            <div
-              class="text-shadow text-5xl md:text-6xl lg:text-6xl xl:text-[72px] xl:leading-[77px] text-left font-light mb-2 xl:mx-0 text-white"
-            >
-              Casa Patron
-            </div>
-          </div>
-        </a>
-        <p
-          class="text-shadow block sm:pt-0 font-light sm:text-lg md:text-xl lg:text-2xl text-white max-w-[250px] lg:max-w-sm"
-        >
-          Short-term vacation rental, located near Ruidoso & Ski Apache.
-        </p>
-      </div>
-    </div>
-  </section>
 
   <!-- Panel Sections -->
   {
     panels.map((content, index) => (
-      <div key={index}>
+      <div>
         <Spacer />
-        <Spacer className="block sm:hidden" />
+        <Spacer class="block sm:hidden" />
         <JumboPanel content={content} />
       </div>
     ))
   }
 
-  <Spacer className="hidden sm:block md:hidden" />
+  <Spacer class="hidden sm:block md:hidden" />
   <Spacer />
-  <Spacer className="block sm:hidden" />
+  <Spacer class="block sm:hidden" />
 
   <!-- First Image Gallery -->
   <ImageGallery images={imagesGallery[0]} />
@@ -310,8 +249,27 @@ const imagesGallery = [
 
   <Spacer sizeY={1} />
 
-  <!-- Local Attractions Section -->
-  <LocalAttractions client:load />
+  <!-- Activities Call-to-Action Section -->
+  <section
+    class="bg-gradient-to-r from-secondary to-tertiary text-white rounded-xl p-8 my-8"
+  >
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Explore Alto & Ruidoso
+      </h2>
+      <p class="text-lg mb-6 opacity-90">
+        Discover world-class skiing at Ski Apache, scenic hiking trails, amazing
+        restaurants, and breathtaking mountain drives. Alto offers year-round
+        outdoor adventures and relaxation opportunities.
+      </p>
+      <a
+        href="/activities/"
+        class="inline-block bg-primary text-grey-neutral font-semibold text-lg px-8 py-4 rounded-lg hover:bg-yellow-400 transition-colors shadow-lg"
+      >
+        View All Activities & Attractions
+      </a>
+    </div>
+  </section>
 
   <Spacer sizeY={1} />
 
@@ -335,9 +293,6 @@ const imagesGallery = [
       Book Now
     </a>
   </div>
-
-  <!-- Add BackToTopButton as React Island -->
-  <BackToTopButton client:load />
 </BaseLayout>
 
 <style>

@@ -10,19 +10,70 @@ export default defineConfig({
   site: "https://casapatronalto.com",
   output: "static",
 
+  // Performance optimizations
+  build: {
+    inlineStylesheets: "auto", // Inline small CSS files
+  },
+
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Optimize chunk sizes for better caching
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ["react", "react-dom"],
+          },
+        },
+      },
+    },
+  },
+
+  // Image optimization
+  image: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "casapatronalto.com",
+      },
+    ],
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: {
+        limitInputPixels: 268402689,
+      },
+    },
   },
 
   integrations: [
     react({
       include: ["**/react/**/*"],
     }),
-    sitemap(),
+    sitemap({
+      // Enhanced sitemap configuration
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date(),
+      customPages: [
+        "https://casapatronalto.com/",
+        "https://casapatronalto.com/activities/",
+        "https://casapatronalto.com/contact-us/",
+        "https://casapatronalto.com/docs/",
+        "https://casapatronalto.com/posts/",
+      ],
+    }),
     partytown({
       config: {
-        forward: ["dataLayer.push"],
+        forward: ["dataLayer.push", "gtag"],
+        debug: false,
       },
     }),
   ],
+
+  // SEO and performance optimizations
+  compressHTML: true,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "viewport",
+  },
 });

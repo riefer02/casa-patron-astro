@@ -1,5 +1,6 @@
 ---
 import SEO from "../components/SEO.astro";
+import Header from "../components/react/Header.jsx";
 import "../styles/global.css";
 
 export interface Props {
@@ -10,10 +11,11 @@ export interface Props {
   type?: "website" | "article";
   schemaMarkup?: object;
   noIndex?: boolean;
-  heroContent?: any;
+  hasHeroContent?: boolean;
   heroImg?: any;
   mobileHeroImg?: any;
   bodyClasses?: string;
+  isHomePage?: boolean;
 }
 
 const {
@@ -24,10 +26,11 @@ const {
   type = "website",
   schemaMarkup,
   noIndex = false,
-  heroContent,
+  hasHeroContent,
   heroImg,
   mobileHeroImg,
   bodyClasses = "",
+  isHomePage = false,
 } = Astro.props;
 ---
 
@@ -56,26 +59,21 @@ const {
   </head>
   <body class={bodyClasses}>
     <div class="relative overflow-hidden">
-      <!-- Header component will go here -->
-      <div id="header-placeholder">
-        <header class="bg-secondary text-white p-4">
-          <h1 class="text-2xl font-bold">Casa Patron</h1>
-          <nav>
-            <a href="/" class="text-primary hover:text-tertiary mx-2">Home</a>
-            <a href="/docs/" class="text-primary hover:text-tertiary mx-2"
-              >Docs</a
-            >
-            <a href="/posts/" class="text-primary hover:text-tertiary mx-2"
-              >Blog</a
-            >
-            <a href="/contact-us/" class="text-primary hover:text-tertiary mx-2"
-              >Contact</a
-            >
-          </nav>
-        </header>
-      </div>
+      <!-- Header with video hero and sticky navigation -->
+      <Header
+        hasHeroContent={hasHeroContent}
+        heroImg={heroImg}
+        mobileHeroImg={mobileHeroImg}
+        isHomePage={isHomePage}
+        client:load
+      />
 
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 z-20 relative min-h-[85vh]">
+      <!-- Main content - add top padding to account for sticky nav -->
+      <main
+        class={isHomePage
+          ? "max-w-7xl mx-auto px-4 sm:px-6 z-20 relative min-h-[85vh]"
+          : "pt-16 max-w-7xl mx-auto px-4 sm:px-6 z-20 relative min-h-[85vh]"}
+      >
         <slot />
       </main>
 
@@ -91,8 +89,5 @@ const {
         </div>
       </footer>
     </div>
-
-    <!-- Back to top button will be added as React island -->
-    <!-- <BackToTopButton client:load /> -->
   </body>
 </html>

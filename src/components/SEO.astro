@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(url, Astro.site).href;
-const imageUrl = new URL(image, Astro.site).href;
+const imageUrl = image ? new URL(image, Astro.site).href : null;
 ---
 
 <!-- Primary Meta Tags -->
@@ -38,7 +38,7 @@ const imageUrl = new URL(image, Astro.site).href;
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={imageUrl} />
+{imageUrl && <meta property="og:image" content={imageUrl} />}
 <meta property="og:site_name" content="Casa Patron" />
 
 <!-- Twitter -->
@@ -46,19 +46,35 @@ const imageUrl = new URL(image, Astro.site).href;
 <meta property="twitter:url" content={canonicalUrl} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={imageUrl} />
+{imageUrl && <meta property="twitter:image" content={imageUrl} />}
 
 <!-- Additional SEO Meta -->
 <meta name="author" content="Casa Patron" />
 <meta name="copyright" content="Casa Patron" />
 <meta name="language" content="English" />
 <meta name="revisit-after" content="7 days" />
+<meta name="rating" content="General" />
+<meta name="distribution" content="Global" />
+
+<!-- Performance and Resource Hints -->
+<meta name="theme-color" content="#FEE43A" />
+<meta name="msapplication-TileColor" content="#FEE43A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
 <!-- Geo Meta for Local Business -->
 <meta name="geo.region" content="US-NM" />
 <meta name="geo.placename" content="Alto, New Mexico" />
 <meta name="geo.position" content="33.41047791700064;-105.6845322600749" />
 <meta name="ICBM" content="33.41047791700064, -105.6845322600749" />
+
+<!-- Local Business Meta -->
+<meta name="business.hours" content="Mo-Su 00:00-24:00" />
+<meta name="business.contact_data.street_address" content="176 Neill Rd" />
+<meta name="business.contact_data.locality" content="Alto" />
+<meta name="business.contact_data.region" content="NM" />
+<meta name="business.contact_data.postal_code" content="88312" />
+<meta name="business.contact_data.country_name" content="United States" />
 
 <!-- Schema Markup -->
 {
