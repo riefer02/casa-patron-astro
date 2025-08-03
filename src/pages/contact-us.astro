@@ -182,7 +182,7 @@ const contactSchema = {
 
           <!-- Email Button -->
           <a
-            href="#"
+            href="mailto:valerie@casapatronalto.com?subject=Casa%20Patron%20Booking%20Inquiry&body=Hi!%20I'm%20interested%20in%20booking%20Casa%20Patron.%20Please%20let%20me%20know%20about%20availability%20and%20rates.%0A%0APreferred%20dates:%0ANumber%20of%20guests:%0A%0AThank%20you!"
             data-email="valerie@casapatronalto.com"
             data-subject="Casa Patron Booking Inquiry"
             data-body="Hi! I'm interested in booking Casa Patron. Please let me know about availability and rates.
@@ -299,31 +299,62 @@ Thank you!"
     emailLinks.forEach((link) => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
-        const target = e.currentTarget as HTMLElement;
+        const target = e.currentTarget;
         const email = target.getAttribute("data-email");
 
-        if (!email) return;
+        if (!email) {
+          console.warn("No email found in data-email attribute");
+          return;
+        }
 
-        // Handle simple email reveal links
-        if (target.textContent?.includes("[Click to reveal email]")) {
-          target.textContent = email;
-          if (target instanceof HTMLAnchorElement) {
-            target.href = `mailto:${email}`;
+        try {
+          // Handle simple email reveal links
+          if (
+            target.textContent &&
+            target.textContent.includes("[Click to reveal email]")
+          ) {
+            target.textContent = email;
+            if (target.tagName.toLowerCase() === "a") {
+              target.href = `mailto:${email}`;
+            }
+            return;
           }
-          return;
-        }
 
-        // Handle email button with subject and body
-        if (target.classList.contains("email-button")) {
-          const subject = target.getAttribute("data-subject") || "";
-          const body = target.getAttribute("data-body") || "";
-          const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          window.location.href = mailtoUrl;
-          return;
-        }
+          // Handle email button with subject and body
+          if (target.classList.contains("email-button")) {
+            const subject = target.getAttribute("data-subject") || "";
+            const body = target.getAttribute("data-body") || "";
+            const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        // Default email link
-        window.location.href = `mailto:${email}`;
+            // Try opening mailto link - fallback to copying email if blocked
+            try {
+              window.location.href = mailtoUrl;
+            } catch {
+              console.warn(
+                "Failed to open mail client, falling back to copy email"
+              );
+              if (navigator.clipboard) {
+                navigator.clipboard
+                  .writeText(email)
+                  .then(() => {
+                    alert(`Email copied to clipboard: ${email}`);
+                  })
+                  .catch(() => {
+                    alert(`Please email us at: ${email}`);
+                  });
+              } else {
+                alert(`Please email us at: ${email}`);
+              }
+            }
+            return;
+          }
+
+          // Default email link
+          window.location.href = `mailto:${email}`;
+        } catch (error) {
+          console.error("Error handling email click:", error);
+          alert(`Please email us at: ${email}`);
+        }
       });
     });
   });
