@@ -1,5 +1,6 @@
 ---
 import SEO from "../components/SEO.astro";
+import Analytics from "../components/Analytics.astro";
 import Header from "../components/react/Header.jsx";
 import "../styles/global.css";
 
@@ -74,6 +75,10 @@ const {
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+    <!-- Google Analytics -->
+    <Analytics />
   </head>
   <body class={bodyClasses}>
     <div class="relative overflow-hidden">
