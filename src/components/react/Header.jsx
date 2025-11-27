@@ -358,7 +358,7 @@ export default function Header({
                   <a
                     href="/contact-us/"
                     aria-label="Book Casa Patron now via the contact page"
-                    className="inline-flex w-full max-w-xs items-center justify-center rounded-full border border-white/40 bg-secondary px-8 py-3 text-center text-lg font-semibold tracking-wide text-white shadow-lg transition-all hover:bg-secondary/90 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:bg-secondary/80 sm:w-auto"
+                    className="inline-flex items-center justify-center self-start rounded-full border border-white/40 bg-secondary px-8 py-3 text-center text-lg font-semibold tracking-wide text-white shadow-lg transition-all hover:bg-secondary/90 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:bg-secondary/80"
                   >
                     Book Now
                   </a>
