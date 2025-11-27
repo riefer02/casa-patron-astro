@@ -1,38 +1,72 @@
 export const localAttractions = [
   {
-    name: "Billy the Kid Pageant 2025",
-    url: "https://www.billyslastescape.org/",
+    name: "Thanksgiving Weekend in Ruidoso",
+    url: "https://www.discoverruidoso.com/calendar-of-events/a-ruidoso-thanksgiving",
     description:
-      "Step back in time at the historic Billy the Kid Pageant, one of America's last remaining folk plays performed by local volunteers since 1940. Experience the dramatic reenactment of the Lincoln County War and Billy the Kid's legendary escape at the LPFC Pageant Grounds in Lincoln, NM.",
-    tags: ["history", "entertainment", "family"],
+      "Kick off the holidays with a long weekend of mountain hikes, Midtown shopping strolls, and seasonal dining specials curated by Discover Ruidoso.",
+    tags: ["holiday", "family", "shopping"],
     eventInfo: {
-      dates: "August 1-3, 2025",
+      dates: "November 27-30, 2025",
       schedule: [
-        "Friday, August 1st – 8:30 PM",
-        "Saturday, August 2nd – 8:30 PM",
-        "Sunday, August 3rd – 1:00 PM",
+        "Holiday hikes & turkey trots across Grindstone Lake trails",
+        "Merchant open houses and tasting events throughout Midtown",
       ],
-      pricing: "Adults: $10 | Children (6-12): $6 | Children 5 and under: FREE",
-      notes:
-        "Tickets available at the gate starting at 10 AM each day. Credit cards accepted, but cash recommended. Live Concert included with admission!",
+      additionalInfo:
+        "Use the Discover Ruidoso itinerary to mix outdoor time with cozy indoor happenings all weekend.",
     },
   },
   {
-    name: "Alto Artists Studio Tour 2025",
-    url: "https://altoartists.org/tour-map-%26-brochure",
+    name: "Grindstone Stables Sleigh Rides Opening Weekend",
+    url: "https://www.discoverruidoso.com/calendar-of-events/grindstone-stables-sleigh-rides-opening-day",
     description:
-      "Explore the vibrant local art scene during the Alto Artists Studio Tour. Visit various artist studios and galleries throughout Alto, showcasing the diverse talents of our local creative community.",
-    tags: ["art", "culture", "local"],
+      "Horse-drawn sleigh rides roll through the historic Upper Canyon, showcasing twinkle lights and crisp night skies—no snowfall required.",
+    tags: ["family", "outdoors", "holiday"],
     eventInfo: {
-      dates: "August 1-3, 2025",
+      dates: "November 27-29, 2025",
+      schedule: ["Rides depart nightly from Grindstone Stables, 5:30 PM – 8:30 PM"],
+      additionalInfo:
+        "Reservations recommended at 575-257-2241; arrive early for pre-ride cocoa and blankets.",
     },
   },
   {
-    name: "Ruidoso Downs Racetrack",
-    url: "https://www.raceruidoso.com/",
+    name: "Christmas at the Flying J Ranch",
+    url: "https://www.discoverruidoso.com/calendar-of-events/christmas-at-the-flying-j-ranch",
     description:
-      "Ruidoso Downs Racetrack has races every Friday through Sunday starting May 26 (Memorial Day Weekend) and ending September 4, Labor Day, the day of the All American Futurity, home to the 'World's Richest Quarter Horse Race.'",
-    tags: ["racing", "entertainment"],
+      "The Flying J crew flips the chuckwagon show into a White Mountain Christmas, pairing a hearty supper with carols, cowboy comedy, and holiday lights.",
+    tags: ["holiday", "music", "family"],
+    eventInfo: {
+      dates: "November 28 – December 28, 2025 (select dates)",
+      schedule: [
+        "Gates & mountain activities open at 5:30 PM",
+        "Chuckwagon supper & Christmas show follow at sunset",
+      ],
+      pricing: "See flyingjchristmas.com/tickets for seating tiers and VIP add-ons.",
+    },
+  },
+  {
+    name: "Los Tigres del Norte at Inn of the Mountain Gods",
+    url: "https://www.discoverruidoso.com/calendar-of-events/los-tigres-del-norte-at-inn-of-the-mountain-gods",
+    description:
+      "The legendary norteño supergroup brings its seven GRAMMY-winning catalogue to the Inn’s lakeside stage for one night only.",
+    tags: ["music", "nightlife", "concert"],
+    eventInfo: {
+      dates: "Friday, November 28, 2025",
+      schedule: ["Doors 6:00 PM · Show 7:00 PM at Inn of the Mountain Gods"],
+      additionalInfo:
+        "Tickets via the resort box office; consider staying for the on-site dining and casino promotions.",
+    },
+  },
+  {
+    name: "Ruidoso Winter Park",
+    url: "https://ruidosowinterpark.com/",
+    description:
+      "Tubing lanes, ziplines, and the Screaming Eagle Mountain Coaster create an all-ages winter playground just minutes from Casa Patron.",
+    tags: ["winter", "family", "adventure"],
+    eventInfo: {
+      dates: "Thanksgiving 2025 through winter (Thu–Sun, 10 AM – 5 PM)",
+      additionalInfo:
+        "Kids 3-5 ride free daily; book tubing + VIP igloo packages in advance and complete waivers online to skip the ticket line.",
+    },
   },
   {
     name: "Ski Apache",
