@@ -354,6 +354,15 @@ export default function Header({
                 <p className="text-shadow block sm:pt-0 font-light sm:text-lg md:text-xl lg:text-2xl text-white max-w-[250px] lg:max-w-sm">
                   Short-term vacation rental, located near Ruidoso & Ski Apache.
                 </p>
+                <div className="mt-8 flex w-full flex-col items-start">
+                  <a
+                    href="/contact-us/"
+                    aria-label="Book Casa Patron now via the contact page"
+                    className="inline-flex w-full max-w-xs items-center justify-center rounded-full border border-white/40 bg-secondary px-8 py-3 text-center text-lg font-semibold tracking-wide text-white shadow-lg transition-all hover:bg-secondary/90 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:bg-secondary/80 sm:w-auto"
+                  >
+                    Book Now
+                  </a>
+                </div>
               </div>
             </div>
           </div>
