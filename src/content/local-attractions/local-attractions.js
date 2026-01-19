@@ -1,136 +1,122 @@
 export const localAttractions = [
+  // Current Season
   {
-    name: "Thanksgiving Weekend in Ruidoso",
-    url: "https://www.discoverruidoso.com/calendar-of-events/a-ruidoso-thanksgiving",
+    name: "Winter Ice Rink at Wingfield Park",
+    url: "https://www.ruidosoparksandrec.com/",
     description:
-      "Kick off the holidays with a long weekend of mountain hikes, Midtown shopping strolls, and seasonal dining specials curated by Discover Ruidoso.",
-    tags: ["holiday", "family", "shopping"],
+      "The pop-up ice rink returns to Wingfield Park for the 2025-2026 winter season. Enjoy outdoor ice skating in the heart of Ruidoso.",
+    tags: ["winter", "family", "outdoor"],
     eventInfo: {
-      dates: "November 27-30, 2025",
-      schedule: [
-        "Holiday hikes & turkey trots across Grindstone Lake trails",
-        "Merchant open houses and tasting events throughout Midtown",
-      ],
-      additionalInfo:
-        "Use the Discover Ruidoso itinerary to mix outdoor time with cozy indoor happenings all weekend.",
+      dates: "Opens November 29, 2025",
+      notes: "Seasonal - check website for hours and closing date.",
+    },
+  },
+  // 2026 Events
+  {
+    name: "Yeti Fest 2026",
+    url: "https://ruidosowinterpark.com/",
+    description:
+      "Celebrate winter at Ruidoso Winter Park with Yeti Fest! A fun-filled day of winter activities and festivities for the whole family.",
+    tags: ["winter", "family", "entertainment"],
+    eventInfo: {
+      dates: "February 22, 2026",
+      schedule: ["10:00 AM - 4:00 PM"],
     },
   },
   {
-    name: "Grindstone Stables Sleigh Rides Opening Weekend",
-    url: "https://www.discoverruidoso.com/calendar-of-events/grindstone-stables-sleigh-rides-opening-day",
+    name: "Brewdoso 2026",
+    url: "https://www.discoverruidoso.com/calendar-of-events",
     description:
-      "Horse-drawn sleigh rides roll through the historic Upper Canyon, showcasing twinkle lights and crisp night skies—no snowfall required.",
-    tags: ["family", "outdoors", "holiday"],
+      "Brewdoso returns to Wingfield Park for a full day of craft beer, live music, and mountain-town energy. Sample regional and national brews, enjoy food vendors and artisan booths, and settle in for an evening of concerts under the pines.",
+    tags: ["beer", "music", "entertainment"],
     eventInfo: {
-      dates: "November 27-29, 2025",
-      schedule: ["Rides depart nightly from Grindstone Stables, 5:30 PM – 8:30 PM"],
-      additionalInfo:
-        "Reservations recommended at 575-257-2241; arrive early for pre-ride cocoa and blankets.",
+      dates: "June 20, 2026",
     },
   },
   {
-    name: "Christmas at the Flying J Ranch",
-    url: "https://www.discoverruidoso.com/calendar-of-events/christmas-at-the-flying-j-ranch",
+    name: "Lincoln County Art Loop 2026",
+    url: "https://www.discoverruidoso.com/calendar-of-events",
     description:
-      "The Flying J crew flips the chuckwagon show into a White Mountain Christmas, pairing a hearty supper with carols, cowboy comedy, and holiday lights.",
-    tags: ["holiday", "music", "family"],
+      "The 31st Annual Lincoln County Art Loop is a juried fine art show drawing over 100 acclaimed artists from across the country. Explore paintings, sculpture, pottery, jewelry, and more while enjoying regional wines and live music.",
+    tags: ["art", "culture", "local"],
     eventInfo: {
-      dates: "November 28 – December 28, 2025 (select dates)",
-      schedule: [
-        "Gates & mountain activities open at 5:30 PM",
-        "Chuckwagon supper & Christmas show follow at sunset",
-      ],
-      pricing: "See flyingjchristmas.com/tickets for seating tiers and VIP add-ons.",
+      dates: "July 3-5, 2026",
+      schedule: ["Starting at 10:00 AM daily"],
     },
   },
   {
-    name: "Los Tigres del Norte at Inn of the Mountain Gods",
-    url: "https://www.discoverruidoso.com/calendar-of-events/los-tigres-del-norte-at-inn-of-the-mountain-gods",
+    name: "IRONMAN 70.3 Ruidoso 2026",
+    url: "https://www.ironman.com/",
     description:
-      "The legendary norteño supergroup brings its seven GRAMMY-winning catalogue to the Inn’s lakeside stage for one night only.",
-    tags: ["music", "nightlife", "concert"],
+      "Ruidoso hosts IRONMAN 70.3, a landmark triathlon event drawing elite athletes from around the world. Watch world-class competitors tackle the challenging high-altitude course through the beautiful Sacramento Mountains.",
+    tags: ["sports", "fitness", "outdoor"],
     eventInfo: {
-      dates: "Friday, November 28, 2025",
-      schedule: ["Doors 6:00 PM · Show 7:00 PM at Inn of the Mountain Gods"],
-      additionalInfo:
-        "Tickets via the resort box office; consider staying for the on-site dining and casino promotions.",
+      dates: "July 11-12, 2026",
+    },
+  },
+  {
+    name: "XTERRA World Championship 2026",
+    url: "https://www.xterraplanet.com/",
+    description:
+      "Wild West XTERRA comes to Ruidoso for the XTERRA World Championship and 30th anniversary celebration. Athletes tackle high-altitude swimming, biking, and trail running around Grindstone Lake and Lincoln National Forest.",
+    tags: ["sports", "fitness", "outdoor"],
+    eventInfo: {
+      dates: "October 8-11, 2026",
+    },
+  },
+  // Year-Round Attractions
+  {
+    name: "Ski Apache",
+    url: "https://www.skiapache.com/",
+    description:
+      "Owned by the Mescalero Apache Tribe, Ski Apache boasts 750 skiable acres across 55 runs, all accessible via 11 lifts including New Mexico's only eight-passenger gondola. The 2025-2026 season opens in late November/early December.",
+    tags: ["ski", "snowboard", "winter"],
+    eventInfo: {
+      dates: "2025-2026 Season: Late November - Early April",
+      notes: "Season passes available. Check website for current conditions and opening date.",
     },
   },
   {
     name: "Ruidoso Winter Park",
     url: "https://ruidosowinterpark.com/",
     description:
-      "Tubing lanes, ziplines, and the Screaming Eagle Mountain Coaster create an all-ages winter playground just minutes from Casa Patron.",
-    tags: ["winter", "family", "adventure"],
+      "Experience snow tubing at Ruidoso's Winter Park in Alto, NM. With more lift capacity and snow making than anywhere in the Rockies, enjoy multiple lanes for all ages, magic carpet lifts, and VIP Igloos to warm up with hot drinks.",
+    tags: ["winter", "tubing", "family"],
     eventInfo: {
-      dates: "Thanksgiving 2025 through winter (Thu–Sun, 10 AM – 5 PM)",
-      additionalInfo:
-        "Kids 3-5 ride free daily; book tubing + VIP igloo packages in advance and complete waivers online to skip the ticket line.",
+      pricing: "Starting at $27 per person | Kids 3 and under: FREE",
+      notes: "Season typically runs late November through March. Call (575) 336-7079 for current hours.",
     },
   },
   {
-    name: "Ski Apache",
-    url: "https://www.skiapache.com/",
+    name: "Ruidoso Downs Race Track",
+    url: "https://www.raceruidoso.com/",
     description:
-      "Ski Apache is a great place for skiing during the winter months. The snow season in Ruidoso begins in November and lasts at least until April.",
-    tags: ["ski", "snowboard", "lessons"],
-  },
-  {
-    name: "Winter Activities",
-    url: "https://www.discoverruidoso.com/info/top-winter-experiences",
-    description:
-      "Discover Ruidoso provides information about tubing at Winter Park during the winter season.",
-    tags: ["winter park tubing", "zip line"],
-  },
-  {
-    name: "Discover Ruidoso - Calendar of Events",
-    url: "https://www.discoverruidoso.com/calendar-of-events",
-    description:
-      "Discover Ruidoso offers a calendar of events, including various activities and events during the winter season.",
-    tags: ["events", "music"],
-  },
-  {
-    name: "Restaurants",
-    url: "https://www.visitruidoso.com/restaurants/",
-    description:
-      "Visit Ruidoso provides information about various restaurants in Ruidoso, offering a wide range of dining options for visitors.",
-    tags: ["restaurants", "dining"],
+      "Home to the World's Richest Quarter Horse Race, the All American Futurity. The 2025 season was relocated to Albuquerque Downs due to flood damage. Racing expected to return to Ruidoso Downs in 2026.",
+    tags: ["racing", "entertainment"],
+    eventInfo: {
+      dates: "Racing season: Memorial Day weekend through Labor Day",
+      notes: "Check website for 2026 schedule updates.",
+    },
   },
   {
     name: "Alto Lake",
     url: "https://www.ruidosoparksandrec.com/alto-lake",
     description:
-      "Alto Lake is a serene natural area that offers fishing opportunities and scenic nature walks. It's a perfect spot for outdoor enthusiasts.",
-    tags: ["fishing", "nature walks"],
+      "Alto Lake is a serene natural area that offers fishing opportunities and scenic nature walks. It's a perfect spot for outdoor enthusiasts looking for a peaceful escape.",
+    tags: ["fishing", "nature", "outdoor"],
   },
   {
-    name: "Spencer Theater for the Performing Arts",
-    url: "https://spencertheater.com/",
+    name: "Discover Ruidoso - Calendar of Events",
+    url: "https://www.discoverruidoso.com/calendar-of-events",
     description:
-      "Named one of the seven finest theaters in the world, this stunning $22 million venue features world-class performances in theater, music, and dance. The 514-seat hall offers outstanding acoustics and intimate seating, while housing the Southwest's largest private collection of Dale Chihuly glass art open for public viewing.",
-    tags: ["theater", "music", "art", "entertainment", "culture"],
-    location: {
-      address: "108 Spencer Rd, Alto, NM 88312",
-      phone: "(575) 336-4800",
-    },
-    highlights: [
-      "Designed by renowned architect Antoine Predock",
-      "Features permanent Dale Chihuly glass installations",
-      "World-class acoustics in an intimate 514-seat venue",
-      "Year-round programming of Broadway, music, and dance",
-      "Popular destination wedding venue",
-      "Guided tours available Tuesdays and Thursdays at 10 AM",
-    ],
-    chihuly: {
-      description:
-        "Houses the largest private Chihuly collection in the Southwest",
-      pieces: [
-        "Glowing Sunset Tower - 14-foot, 564-piece sculpture in Crystal Lobby",
-        "Indian Paint Brushes - 177-piece sculpture inspired by New Mexico wildflowers",
-        "The Persians - 36-piece display along upper crystal lobby wall",
-        "Cobalt Blue Baskets - Gift from Chihuly to founder Jackie Spencer",
-        "Ruby Sea Garden & Chandelier - Located in exclusive Founder's Room",
-      ],
-    },
+      "The official tourism website for Ruidoso offers a comprehensive calendar of events, including concerts, festivals, and community activities throughout the year.",
+    tags: ["events", "music", "information"],
+  },
+  {
+    name: "Ruidoso Restaurants",
+    url: "https://www.visitruidoso.com/restaurants/",
+    description:
+      "Visit Ruidoso provides information about various restaurants in Ruidoso, offering a wide range of dining options from casual to fine dining.",
+    tags: ["restaurants", "dining"],
   },
 ];
