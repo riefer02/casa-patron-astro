@@ -1,71 +1,5 @@
 export const localAttractions = [
-  // 2025 Events
-  {
-    name: "Lincoln Forest Renaissance Faire 2025",
-    url: "https://www.lincolnforestrenfair.com/",
-    description:
-      "Immerse yourself in medieval magic at Wingfield Park in Ruidoso. Enjoy jesters, minstrels, a bustling marketplace with medieval wares, delicious Renaissance fare, and enchanting children's activities.",
-    tags: ["entertainment", "family", "culture"],
-    eventInfo: {
-      dates: "May 16-18, 2025",
-      schedule: [
-        "Friday: 4:00 PM - 9:00 PM",
-        "Saturday: 10:00 AM - 9:00 PM",
-        "Sunday: 10:00 AM - 5:00 PM",
-      ],
-      pricing: "Advance: $25 single day, $45 weekend | At gate: $30 single day, $50 weekend | Kids 12 & under: FREE",
-    },
-  },
-  {
-    name: "Billy the Kid Pageant 2025",
-    url: "https://www.billyslastescape.org/",
-    description:
-      "Step back in time at the historic Billy the Kid Pageant, one of America's last remaining folk plays performed by local volunteers since 1940. Experience the dramatic reenactment of the Lincoln County War and Billy the Kid's legendary escape at the LPFC Pageant Grounds in Lincoln, NM.",
-    tags: ["history", "entertainment", "family"],
-    eventInfo: {
-      dates: "August 1-3, 2025",
-      schedule: [
-        "Friday, August 1st – 8:30 PM",
-        "Saturday, August 2nd – 8:30 PM",
-        "Sunday, August 3rd – 1:00 PM",
-      ],
-      pricing: "Adults: $10 | Children (6-12): $6 | Children 5 and under: FREE",
-      notes:
-        "Tickets available at the gate starting at 10 AM each day. Credit cards accepted, but cash recommended. Live Concert included with admission!",
-    },
-  },
-  {
-    name: "Alto Artists Studio Tour 2025",
-    url: "https://altoartists.org/",
-    description:
-      "Explore the vibrant local art scene during the Alto Artists Studio Tour. This free, self-guided tour takes you inside the studios and homes of Alto's professional artists. From ceramics and glass to woodwork and textiles, each stop reveals the stories and spaces behind the art.",
-    tags: ["art", "culture", "local"],
-    eventInfo: {
-      dates: "August 1-3, 2025",
-      notes: "Free admission. Located 8 miles north of Ruidoso.",
-    },
-  },
-  {
-    name: "A Christmas Affair 2025",
-    url: "https://www.ruidosoconventioncenter.com/",
-    description:
-      "Shop for unique, handcrafted gifts from artisan makers and small businesses at the Ruidoso Convention Center. A perfect opportunity to find one-of-a-kind holiday presents.",
-    tags: ["shopping", "holiday", "family"],
-    eventInfo: {
-      dates: "November 1-2, 2025",
-    },
-  },
-  {
-    name: "Turkey Trot 5K 2025",
-    url: "https://www.ruidosoparksandrec.com/",
-    description:
-      "Join the 11th Annual Turkey Trot 5K Run/Walk on the Links Trail. A fun way to kick off Thanksgiving weekend and burn some calories before the big meal!",
-    tags: ["fitness", "family", "outdoor"],
-    eventInfo: {
-      dates: "November 29, 2025",
-      schedule: ["10:00 AM start time"],
-    },
-  },
+  // Current Season
   {
     name: "Winter Ice Rink at Wingfield Park",
     url: "https://www.ruidosoparksandrec.com/",
@@ -75,18 +9,6 @@ export const localAttractions = [
     eventInfo: {
       dates: "Opens November 29, 2025",
       notes: "Seasonal - check website for hours and closing date.",
-    },
-  },
-  {
-    name: "Christmas Drone Show 2025",
-    url: "https://www.ruidoso-nm.gov/",
-    description:
-      "A FREE public event at White Mountain Sports Complex featuring a showing of 'The Nutcracker and the Four Realms' at 6:00 PM followed by a spectacular drone light show at 8:15 PM.",
-    tags: ["holiday", "family", "entertainment"],
-    eventInfo: {
-      dates: "December 13, 2025",
-      schedule: ["Movie: 6:00 PM", "Drone Show: 8:15 PM"],
-      pricing: "FREE",
     },
   },
   // 2026 Events
