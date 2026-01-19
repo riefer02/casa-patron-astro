@@ -34,7 +34,7 @@ Astro's type-safe content layer with Zod schemas in `src/content/config.ts`:
 
 - **docs/** - Guest documentation (house rules, amenities, etc.) - excluded from sitemap, noIndex
 - **posts/** - Blog articles with images, categories, tags
-- **local-attractions/** - Event data in `localAttractions.js` (72 entries with dates, pricing, tags)
+- **local-attractions/** - Event data in `local-attractions.js` (12 entries with dates, pricing, tags)
 
 ### Path Aliases
 
@@ -59,7 +59,7 @@ Astro's type-safe content layer with Zod schemas in `src/content/config.ts`:
 - `src/layouts/BaseLayout.astro` - Main template wrapping all pages
 - `src/components/react/Header.jsx` - Complex navigation with mobile menu state
 - `src/pages/index.astro` - Homepage (26+ image imports)
-- `src/utils/localAttractions.js` - Activities database requiring periodic updates
+- `src/content/local-attractions/local-attractions.js` - Activities database requiring periodic updates
 - `src/styles/global.css` - Tailwind theme config and custom animations
 
 ## Brand Colors

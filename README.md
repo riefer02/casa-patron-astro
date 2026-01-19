@@ -189,7 +189,7 @@ TypeScript is configured with path aliases for clean imports:
 
 ```typescript
 import Logo from "@/components/Logo.astro";
-import { attraction } from "@/utils/localAttractions.js";
+import { localAttractions } from "@/content/local-attractions/local-attractions.js";
 ```
 
 ## 🤝 Contributing
