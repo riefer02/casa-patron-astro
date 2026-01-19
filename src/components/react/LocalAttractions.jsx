@@ -146,7 +146,7 @@ export default function LocalAttractions() {
                     href={attraction.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-secondary hover:bg-tertiary transition-colors duration-200 text-white font-medium px-6 py-3 rounded-lg text-sm whitespace-nowrap shadow-sm hover:shadow-md"
+                    className="inline-flex items-center justify-center bg-secondary hover:bg-tertiary hover:scale-[1.02] transition-all duration-200 text-white font-medium px-6 py-3 rounded-lg text-sm whitespace-nowrap shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary"
                   >
                     Learn More →
                   </a>
@@ -169,13 +169,13 @@ export default function LocalAttractions() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/"
-            className="bg-primary transition hover:bg-yellow-400 text-grey-neutral text-xl sm:text-2xl font-light rounded-full py-2 sm:py-2 px-6 sm:px-6 shadow-md hover:shadow-sm"
+            className="bg-primary transition-all duration-200 hover:bg-yellow-400 hover:scale-[1.02] text-grey-neutral text-xl sm:text-2xl font-light rounded-full py-2 sm:py-2 px-6 sm:px-6 shadow-md hover:shadow-lg focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
           >
             Back to Casa Patron
           </a>
           <a
             href="/contact-us/"
-            className="bg-secondary transition hover:bg-tertiary text-white text-xl sm:text-2xl font-light rounded-full py-2 sm:py-2 px-6 sm:px-6 shadow-md hover:shadow-sm"
+            className="bg-secondary transition-all duration-200 hover:bg-tertiary hover:scale-[1.02] text-white text-xl sm:text-2xl font-light rounded-full py-2 sm:py-2 px-6 sm:px-6 shadow-md hover:shadow-lg focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary"
           >
             Book Your Stay
           </a>
