@@ -1,8 +1,13 @@
 ---
 import { Image } from "astro:assets";
 
+interface GalleryImage {
+  src: any;
+  alt: string;
+}
+
 export interface Props {
-  images: any[];
+  images: GalleryImage[];
 }
 
 const { images } = Astro.props;
@@ -13,8 +18,8 @@ const { images } = Astro.props;
     images.map((image, index) => (
       <div key={index} class="rounded-3xl overflow-hidden shadow-md">
         <Image
-          src={image}
-          alt={`Casa Patron gallery image ${index + 1}`}
+          src={image.src}
+          alt={image.alt}
           width={600}
           height={400}
           quality={80}

@@ -7,12 +7,19 @@ const posts = await getCollection("posts", ({ data }) => {
 });
 
 const sortedPosts = posts.sort((a, b) => b.data.date - a.data.date);
+
+// Breadcrumbs for navigation
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/posts/" },
+];
 ---
 
 <BaseLayout
   title="Casa Patron Blog - Latest News & Updates"
   description="Stay updated with the latest news, updates, and insights about Casa Patron vacation rental in Alto, NM"
   keywords={["casa patron", "blog", "vacation rental", "alto nm", "news"]}
+  breadcrumbs={breadcrumbs}
 >
   <div class="max-w-4xl mx-auto">
     <header class="text-center mb-12">

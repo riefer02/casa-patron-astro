@@ -1,4 +1,9 @@
 ---
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 export interface Props {
   title?: string;
   description?: string;
@@ -10,6 +15,7 @@ export interface Props {
   noIndex?: boolean;
   publishedTime?: Date;
   modifiedTime?: Date;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -23,11 +29,24 @@ const {
   noIndex = false,
   publishedTime,
   modifiedTime,
+  breadcrumbs = [],
 } = Astro.props;
 
 const canonicalUrl = new URL(url, Astro.site).href;
 const imageUrl = image ? new URL(image, Astro.site).href : null;
 const siteName = "Casa Patron";
+
+// Generate BreadcrumbList schema
+const breadcrumbSchema = breadcrumbs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    item: new URL(item.url, Astro.site).href,
+  })),
+} : null;
 ---
 
 <!-- Primary Meta Tags -->
@@ -95,6 +114,16 @@ const siteName = "Casa Patron";
     <script
       type="application/ld+json"
       set:html={JSON.stringify(schemaMarkup)}
+    />
+  )
+}
+
+<!-- Breadcrumb Schema -->
+{
+  breadcrumbSchema && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(breadcrumbSchema)}
     />
   )
 }

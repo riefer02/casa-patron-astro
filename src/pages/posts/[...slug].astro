@@ -27,6 +27,13 @@ const relatedPosts = allPosts
   )
   .slice(0, 3);
 
+// Breadcrumbs for navigation
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/posts/" },
+  { name: post.data.title, url: `/posts/${post.slug}/` },
+];
+
 // Article schema for better SEO
 const articleSchema = {
   "@context": "https://schema.org",
@@ -61,6 +68,7 @@ const articleSchema = {
   schemaMarkup={articleSchema}
   publishedTime={post.data.date}
   modifiedTime={post.data.date}
+  breadcrumbs={breadcrumbs}
 >
   <div class="max-w-4xl mx-auto py-8">
     <article class="prose lg:prose-xl mx-auto">

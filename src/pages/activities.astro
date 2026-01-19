@@ -17,6 +17,12 @@ const keywords = [
   "alto nm things to do",
 ];
 
+// Breadcrumbs for navigation
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Activities", url: "/activities/" },
+];
+
 // Generate ItemList schema for attractions
 const activitiesSchema = {
   "@context": "https://schema.org",
@@ -44,6 +50,7 @@ const activitiesSchema = {
   keywords={keywords}
   schemaMarkup={activitiesSchema}
   type="website"
+  breadcrumbs={breadcrumbs}
 >
   <!-- Hero Section -->
   <div

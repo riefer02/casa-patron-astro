@@ -15,6 +15,12 @@ const keywords = [
   "casa patron contact",
 ];
 
+// Breadcrumbs for navigation
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Contact", url: "/contact-us/" },
+];
+
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
@@ -44,6 +50,7 @@ const contactSchema = {
   keywords={keywords}
   schemaMarkup={contactSchema}
   type="website"
+  breadcrumbs={breadcrumbs}
 >
   <div class="max-w-4xl mx-auto">
     <header class="text-center mb-12">

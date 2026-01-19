@@ -4,6 +4,11 @@ import Analytics from "../components/Analytics.astro";
 import Header from "../components/react/Header.jsx";
 import "../styles/global.css";
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 export interface Props {
   title: string;
   description?: string;
@@ -19,6 +24,7 @@ export interface Props {
   isHomePage?: boolean;
   publishedTime?: Date;
   modifiedTime?: Date;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -36,6 +42,7 @@ const {
   isHomePage = false,
   publishedTime,
   modifiedTime,
+  breadcrumbs = [],
 } = Astro.props;
 ---
 
@@ -66,6 +73,7 @@ const {
       noIndex={noIndex}
       publishedTime={publishedTime}
       modifiedTime={modifiedTime}
+      breadcrumbs={breadcrumbs}
     />
 
     <!-- Preload critical fonts if needed -->
