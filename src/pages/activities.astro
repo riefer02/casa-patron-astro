@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LocalAttractions from "../components/react/LocalAttractions.jsx";
+import { localAttractions } from "../utils/localAttractions.js";
 
 const title = "Local Activities & Attractions in Alto, NM";
 const description =
@@ -15,12 +16,33 @@ const keywords = [
   "vacation activities",
   "alto nm things to do",
 ];
+
+// Generate ItemList schema for attractions
+const activitiesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Local Activities & Attractions Near Casa Patron",
+  description: description,
+  numberOfItems: localAttractions.length,
+  itemListElement: localAttractions.slice(0, 10).map((attraction, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": attraction.eventInfo?.dates ? "Event" : "TouristAttraction",
+      name: attraction.name,
+      description: attraction.description,
+      url: attraction.url,
+      ...(attraction.eventInfo?.dates && { startDate: attraction.eventInfo.dates }),
+    },
+  })),
+};
 ---
 
 <BaseLayout
   title={title}
   description={description}
   keywords={keywords}
+  schemaMarkup={activitiesSchema}
   type="website"
 >
   <!-- Hero Section -->

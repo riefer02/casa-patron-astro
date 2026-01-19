@@ -17,6 +17,8 @@ export interface Props {
   mobileHeroImg?: any;
   bodyClasses?: string;
   isHomePage?: boolean;
+  publishedTime?: Date;
+  modifiedTime?: Date;
 }
 
 const {
@@ -32,6 +34,8 @@ const {
   mobileHeroImg,
   bodyClasses = "",
   isHomePage = false,
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 ---
 
@@ -60,14 +64,20 @@ const {
       type={type}
       schemaMarkup={schemaMarkup}
       noIndex={noIndex}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
     />
 
     <!-- Preload critical fonts if needed -->
     <!-- <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin /> -->
 
+    <!-- DNS prefetch for faster resolution -->
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
     <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 
     <!-- Google Analytics -->
     <Analytics />

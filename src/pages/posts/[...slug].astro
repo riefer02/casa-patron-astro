@@ -26,6 +26,31 @@ const relatedPosts = allPosts
       p.data.tags.some((tag) => post.data.tags.includes(tag))
   )
   .slice(0, 3);
+
+// Article schema for better SEO
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  author: {
+    "@type": "Person",
+    name: post.data.author,
+  },
+  datePublished: post.data.date.toISOString(),
+  dateModified: post.data.date.toISOString(),
+  publisher: {
+    "@type": "Organization",
+    name: "Casa Patron",
+    url: "https://casapatronalto.com",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://casapatronalto.com/posts/${post.slug}/`,
+  },
+  keywords: post.data.tags.join(", "),
+  articleSection: post.data.category,
+};
 ---
 
 <BaseLayout
@@ -33,6 +58,9 @@ const relatedPosts = allPosts
   description={post.data.description}
   keywords={post.data.tags}
   type="article"
+  schemaMarkup={articleSchema}
+  publishedTime={post.data.date}
+  modifiedTime={post.data.date}
 >
   <div class="max-w-4xl mx-auto py-8">
     <article class="prose lg:prose-xl mx-auto">
