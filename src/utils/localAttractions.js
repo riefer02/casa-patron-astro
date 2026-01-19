@@ -1,4 +1,21 @@
 export const localAttractions = [
+  // 2025 Events
+  {
+    name: "Lincoln Forest Renaissance Faire 2025",
+    url: "https://www.lincolnforestrenfair.com/",
+    description:
+      "Immerse yourself in medieval magic at Wingfield Park in Ruidoso. Enjoy jesters, minstrels, a bustling marketplace with medieval wares, delicious Renaissance fare, and enchanting children's activities.",
+    tags: ["entertainment", "family", "culture"],
+    eventInfo: {
+      dates: "May 16-18, 2025",
+      schedule: [
+        "Friday: 4:00 PM - 9:00 PM",
+        "Saturday: 10:00 AM - 9:00 PM",
+        "Sunday: 10:00 AM - 5:00 PM",
+      ],
+      pricing: "Advance: $25 single day, $45 weekend | At gate: $30 single day, $50 weekend | Kids 12 & under: FREE",
+    },
+  },
   {
     name: "Billy the Kid Pageant 2025",
     url: "https://www.billyslastescape.org/",
@@ -19,54 +36,165 @@ export const localAttractions = [
   },
   {
     name: "Alto Artists Studio Tour 2025",
-    url: "https://altoartists.org/tour-map-%26-brochure",
+    url: "https://altoartists.org/",
     description:
-      "Explore the vibrant local art scene during the Alto Artists Studio Tour. Visit various artist studios and galleries throughout Alto, showcasing the diverse talents of our local creative community.",
+      "Explore the vibrant local art scene during the Alto Artists Studio Tour. This free, self-guided tour takes you inside the studios and homes of Alto's professional artists. From ceramics and glass to woodwork and textiles, each stop reveals the stories and spaces behind the art.",
     tags: ["art", "culture", "local"],
     eventInfo: {
       dates: "August 1-3, 2025",
+      notes: "Free admission. Located 8 miles north of Ruidoso.",
     },
   },
   {
-    name: "Ruidoso Downs Racetrack",
-    url: "https://www.raceruidoso.com/",
+    name: "A Christmas Affair 2025",
+    url: "https://www.ruidosoconventioncenter.com/",
     description:
-      "Ruidoso Downs Racetrack has races every Friday through Sunday starting May 26 (Memorial Day Weekend) and ending September 4, Labor Day, the day of the All American Futurity, home to the 'World's Richest Quarter Horse Race.'",
-    tags: ["racing", "entertainment"],
+      "Shop for unique, handcrafted gifts from artisan makers and small businesses at the Ruidoso Convention Center. A perfect opportunity to find one-of-a-kind holiday presents.",
+    tags: ["shopping", "holiday", "family"],
+    eventInfo: {
+      dates: "November 1-2, 2025",
+    },
   },
+  {
+    name: "Turkey Trot 5K 2025",
+    url: "https://www.ruidosoparksandrec.com/",
+    description:
+      "Join the 11th Annual Turkey Trot 5K Run/Walk on the Links Trail. A fun way to kick off Thanksgiving weekend and burn some calories before the big meal!",
+    tags: ["fitness", "family", "outdoor"],
+    eventInfo: {
+      dates: "November 29, 2025",
+      schedule: ["10:00 AM start time"],
+    },
+  },
+  {
+    name: "Winter Ice Rink at Wingfield Park",
+    url: "https://www.ruidosoparksandrec.com/",
+    description:
+      "The pop-up ice rink returns to Wingfield Park for the 2025-2026 winter season. Enjoy outdoor ice skating in the heart of Ruidoso.",
+    tags: ["winter", "family", "outdoor"],
+    eventInfo: {
+      dates: "Opens November 29, 2025",
+      notes: "Seasonal - check website for hours and closing date.",
+    },
+  },
+  {
+    name: "Christmas Drone Show 2025",
+    url: "https://www.ruidoso-nm.gov/",
+    description:
+      "A FREE public event at White Mountain Sports Complex featuring a showing of 'The Nutcracker and the Four Realms' at 6:00 PM followed by a spectacular drone light show at 8:15 PM.",
+    tags: ["holiday", "family", "entertainment"],
+    eventInfo: {
+      dates: "December 13, 2025",
+      schedule: ["Movie: 6:00 PM", "Drone Show: 8:15 PM"],
+      pricing: "FREE",
+    },
+  },
+  // 2026 Events
+  {
+    name: "Yeti Fest 2026",
+    url: "https://ruidosowinterpark.com/",
+    description:
+      "Celebrate winter at Ruidoso Winter Park with Yeti Fest! A fun-filled day of winter activities and festivities for the whole family.",
+    tags: ["winter", "family", "entertainment"],
+    eventInfo: {
+      dates: "February 22, 2026",
+      schedule: ["10:00 AM - 4:00 PM"],
+    },
+  },
+  {
+    name: "Brewdoso 2026",
+    url: "https://www.discoverruidoso.com/calendar-of-events",
+    description:
+      "Brewdoso returns to Wingfield Park for a full day of craft beer, live music, and mountain-town energy. Sample regional and national brews, enjoy food vendors and artisan booths, and settle in for an evening of concerts under the pines.",
+    tags: ["beer", "music", "entertainment"],
+    eventInfo: {
+      dates: "June 20, 2026",
+    },
+  },
+  {
+    name: "Lincoln County Art Loop 2026",
+    url: "https://www.discoverruidoso.com/calendar-of-events",
+    description:
+      "The 31st Annual Lincoln County Art Loop is a juried fine art show drawing over 100 acclaimed artists from across the country. Explore paintings, sculpture, pottery, jewelry, and more while enjoying regional wines and live music.",
+    tags: ["art", "culture", "local"],
+    eventInfo: {
+      dates: "July 3-5, 2026",
+      schedule: ["Starting at 10:00 AM daily"],
+    },
+  },
+  {
+    name: "IRONMAN 70.3 Ruidoso 2026",
+    url: "https://www.ironman.com/",
+    description:
+      "Ruidoso hosts IRONMAN 70.3, a landmark triathlon event drawing elite athletes from around the world. Watch world-class competitors tackle the challenging high-altitude course through the beautiful Sacramento Mountains.",
+    tags: ["sports", "fitness", "outdoor"],
+    eventInfo: {
+      dates: "July 11-12, 2026",
+    },
+  },
+  {
+    name: "XTERRA World Championship 2026",
+    url: "https://www.xterraplanet.com/",
+    description:
+      "Wild West XTERRA comes to Ruidoso for the XTERRA World Championship and 30th anniversary celebration. Athletes tackle high-altitude swimming, biking, and trail running around Grindstone Lake and Lincoln National Forest.",
+    tags: ["sports", "fitness", "outdoor"],
+    eventInfo: {
+      dates: "October 8-11, 2026",
+    },
+  },
+  // Year-Round Attractions
   {
     name: "Ski Apache",
     url: "https://www.skiapache.com/",
     description:
-      "Ski Apache is a great place for skiing during the winter months. The snow season in Ruidoso begins in November and lasts at least until April.",
-    tags: ["ski", "snowboard", "lessons"],
+      "Owned by the Mescalero Apache Tribe, Ski Apache boasts 750 skiable acres across 55 runs, all accessible via 11 lifts including New Mexico's only eight-passenger gondola. The 2025-2026 season opens in late November/early December.",
+    tags: ["ski", "snowboard", "winter"],
+    eventInfo: {
+      dates: "2025-2026 Season: Late November - Early April",
+      notes: "Season passes available. Check website for current conditions and opening date.",
+    },
   },
   {
-    name: "Winter Activities",
-    url: "https://www.discoverruidoso.com/info/top-winter-experiences",
+    name: "Ruidoso Winter Park",
+    url: "https://ruidosowinterpark.com/",
     description:
-      "Discover Ruidoso provides information about tubing at Winter Park during the winter season.",
-    tags: ["winter park tubing", "zip line"],
+      "Experience snow tubing at Ruidoso's Winter Park in Alto, NM. With more lift capacity and snow making than anywhere in the Rockies, enjoy multiple lanes for all ages, magic carpet lifts, and VIP Igloos to warm up with hot drinks.",
+    tags: ["winter", "tubing", "family"],
+    eventInfo: {
+      pricing: "Starting at $27 per person | Kids 3 and under: FREE",
+      notes: "Season typically runs late November through March. Call (575) 336-7079 for current hours.",
+    },
   },
   {
-    name: "Discover Ruidoso - Calendar of Events",
-    url: "https://www.discoverruidoso.com/calendar-of-events",
+    name: "Ruidoso Downs Race Track",
+    url: "https://www.raceruidoso.com/",
     description:
-      "Discover Ruidoso offers a calendar of events, including various activities and events during the winter season.",
-    tags: ["events", "music"],
-  },
-  {
-    name: "Restaurants",
-    url: "https://www.visitruidoso.com/restaurants/",
-    description:
-      "Visit Ruidoso provides information about various restaurants in Ruidoso, offering a wide range of dining options for visitors.",
-    tags: ["restaurants", "dining"],
+      "Home to the World's Richest Quarter Horse Race, the All American Futurity. The 2025 season was relocated to Albuquerque Downs due to flood damage. Racing expected to return to Ruidoso Downs in 2026.",
+    tags: ["racing", "entertainment"],
+    eventInfo: {
+      dates: "Racing season: Memorial Day weekend through Labor Day",
+      notes: "Check website for 2026 schedule updates.",
+    },
   },
   {
     name: "Alto Lake",
     url: "https://www.ruidosoparksandrec.com/alto-lake",
     description:
-      "Alto Lake is a serene natural area that offers fishing opportunities and scenic nature walks. It's a perfect spot for outdoor enthusiasts.",
-    tags: ["fishing", "nature walks"],
+      "Alto Lake is a serene natural area that offers fishing opportunities and scenic nature walks. It's a perfect spot for outdoor enthusiasts looking for a peaceful escape.",
+    tags: ["fishing", "nature", "outdoor"],
+  },
+  {
+    name: "Discover Ruidoso - Calendar of Events",
+    url: "https://www.discoverruidoso.com/calendar-of-events",
+    description:
+      "The official tourism website for Ruidoso offers a comprehensive calendar of events, including concerts, festivals, and community activities throughout the year.",
+    tags: ["events", "music", "information"],
+  },
+  {
+    name: "Ruidoso Restaurants",
+    url: "https://www.visitruidoso.com/restaurants/",
+    description:
+      "Visit Ruidoso provides information about various restaurants in Ruidoso, offering a wide range of dining options from casual to fine dining.",
+    tags: ["restaurants", "dining"],
   },
 ];
