@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -8,20 +8,20 @@ export async function getStaticPaths() {
   });
 
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 // Get related posts
 const allPosts = await getCollection("posts");
 const relatedPosts = allPosts
   .filter(
     (p) =>
-      p.slug !== post.slug &&
+      p.id !== post.id &&
       !p.data.draft &&
       p.data.tags.some((tag) => post.data.tags.includes(tag))
   )
@@ -31,7 +31,7 @@ const relatedPosts = allPosts
 const breadcrumbs = [
   { name: "Home", url: "/" },
   { name: "Blog", url: "/posts/" },
-  { name: post.data.title, url: `/posts/${post.slug}/` },
+  { name: post.data.title, url: `/posts/${post.id}/` },
 ];
 
 // Article schema for better SEO
@@ -53,7 +53,7 @@ const articleSchema = {
   },
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": `https://casapatronalto.com/posts/${post.slug}/`,
+    "@id": `https://casapatronalto.com/posts/${post.id}/`,
   },
   keywords: post.data.tags.join(", "),
   articleSection: post.data.category,
@@ -119,7 +119,7 @@ const articleSchema = {
             <div class="grid md:grid-cols-3 gap-6">
               {relatedPosts.map((relatedPost) => (
                 <a
-                  href={`/posts/${relatedPost.slug}/`}
+                  href={`/posts/${relatedPost.id}/`}
                   class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
                 >
                   <div class="p-4">

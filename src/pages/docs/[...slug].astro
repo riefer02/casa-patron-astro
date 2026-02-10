@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -8,13 +8,13 @@ export async function getStaticPaths() {
   });
 
   return docs.map((doc) => ({
-    params: { slug: doc.slug },
+    params: { slug: doc.id },
     props: { doc },
   }));
 }
 
 const { doc } = Astro.props;
-const { Content, headings } = await doc.render();
+const { Content, headings } = await render(doc);
 
 // Sort docs by order for navigation
 const allDocs = await getCollection("docs");
@@ -22,14 +22,14 @@ const sortedDocs = allDocs
   .filter((d) => !d.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
 
-const currentIndex = sortedDocs.findIndex((d) => d.slug === doc.slug);
+const currentIndex = sortedDocs.findIndex((d) => d.id === doc.id);
 const prevDoc = currentIndex > 0 ? sortedDocs[currentIndex - 1] : null;
 const nextDoc =
   currentIndex < sortedDocs.length - 1 ? sortedDocs[currentIndex + 1] : null;
 ---
 
-<BaseLayout 
-  title={doc.data.title} 
+<BaseLayout
+  title={doc.data.title}
   description={doc.data.description}
   keywords={doc.data.tags}
   type="article"
@@ -83,7 +83,7 @@ const nextDoc =
       {
         prevDoc ? (
           <a
-            href={`/docs/${prevDoc.slug}/`}
+            href={`/docs/${prevDoc.id}/`}
             class="flex items-center text-secondary hover:text-tertiary"
           >
             ← {prevDoc.data.title}
@@ -96,7 +96,7 @@ const nextDoc =
       {
         nextDoc ? (
           <a
-            href={`/docs/${nextDoc.slug}/`}
+            href={`/docs/${nextDoc.id}/`}
             class="flex items-center text-secondary hover:text-tertiary"
           >
             {nextDoc.data.title} →

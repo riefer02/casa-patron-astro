@@ -1,4 +1,19 @@
-export const localAttractions = [
+interface EventInfo {
+  dates?: string;
+  schedule?: string[];
+  pricing?: string;
+  notes?: string;
+}
+
+interface LocalAttraction {
+  name: string;
+  url: string;
+  description: string;
+  tags: string[];
+  eventInfo?: EventInfo;
+}
+
+export const localAttractions: LocalAttraction[] = [
   // Current Season
   {
     name: "Winter Ice Rink at Wingfield Park",

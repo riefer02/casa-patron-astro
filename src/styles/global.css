@@ -10,11 +10,6 @@
   --color-grey-neutral: #273240;
   --color-success: #28d679;
 
-  /* Secondary variants for existing animations */
-  --color-secondary-red: theme(--color-primary);
-  --color-secondary-green: theme(--color-success);
-  --color-secondary-blue: theme(--color-tertiary);
-
   /* Custom animations */
   --animate-spin-words: spin-words 8s linear infinite;
 
@@ -30,11 +25,12 @@ html {
 body {
   scroll-behavior: smooth;
   color: var(--color-grey-neutral);
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 /* Custom utilities */
 @utility text-shadow {
-  text-shadow: 2px 2px 4px rgba(39, 50, 64, 0.3);
+  text-shadow: var(--shadow-text);
 }
 
 @utility text-shadow-md {
@@ -47,28 +43,6 @@ body {
 
 @utility text-shadow-none {
   text-shadow: none;
-}
-
-/* Line clamp utilities */
-@utility line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-@utility line-clamp-3 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-@utility line-clamp-4 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
 }
 
 .logo-shadow {
@@ -93,20 +67,6 @@ body {
   100% {
     transform: translateY(-300%);
   }
-}
-
-/* Custom utilities */
-@utility text-shadow {
-  text-shadow: var(--shadow-text);
-}
-
-/* Global styles */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: system-ui, -apple-system, sans-serif;
 }
 
 /* Preserve important animation */
@@ -144,7 +104,7 @@ body {
   }
 
   /* Force full viewport coverage */
-  .sm\\:hidden.fixed {
+  .sm\:hidden.fixed {
     width: 100vw !important;
     left: 0 !important;
     right: 0 !important;

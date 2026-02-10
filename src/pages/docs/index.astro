@@ -35,7 +35,7 @@ const sortedDocs = docs.sort((a, b) => a.data.order - b.data.order);
       {
         sortedDocs.map((doc) => (
           <a
-            href={`/docs/${doc.slug}/`}
+            href={`/docs/${doc.id}/`}
             class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200 hover:border-secondary"
           >
             <h2 class="text-xl font-bold text-secondary mb-3">

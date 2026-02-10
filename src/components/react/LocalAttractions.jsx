@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { localAttractions } from "../../content/local-attractions/local-attractions";
+import { localAttractions } from "../../content/local-attractions/local-attractions.ts";
 
 export default function LocalAttractions() {
   const [expandedCards, setExpandedCards] = useState({});
@@ -124,13 +124,13 @@ export default function LocalAttractions() {
                             </div>
                           )}
 
-                          {attraction.eventInfo.additionalInfo && (
+                          {attraction.eventInfo.notes && (
                             <div>
                               <h4 className="text-sm font-bold text-secondary mb-1">
-                                Additional Info:
+                                Note:
                               </h4>
                               <p className="text-sm text-grey-neutral">
-                                {attraction.eventInfo.additionalInfo}
+                                {attraction.eventInfo.notes}
                               </p>
                             </div>
                           )}
