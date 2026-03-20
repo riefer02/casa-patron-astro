@@ -87,6 +87,11 @@ const {
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 
+    <!-- Preload hero video on desktop only -->
+    {isHomePage && (
+      <link rel="preload" href="/cp-hero-video.mp4" as="video" type="video/mp4" media="(min-width: 640px)" />
+    )}
+
     <!-- Google Analytics -->
     <Analytics />
   </head>

@@ -21,6 +21,7 @@ const useUserAgent = () => {
 const navLinks = [
   { label: "Home", url: "/" },
   { label: "Activities", url: "/activities/" },
+  { label: "Reviews", url: "/reviews/" },
   // { label: "Docs", url: "/docs/" },
   { label: "Blog", url: "/posts/" },
   { label: "Contact Us", url: "/contact-us/" },
@@ -119,6 +120,7 @@ export default function Header({
               autoPlay
               playsInline
               preload="none"
+              // poster="/cp-hero-poster.jpg" // Disabled: video has a black fade-in, causing poster→black→fade flicker
               id="hero-video"
               className="hidden sm:block relative z-10 w-full h-full object-cover"
               ref={videoRef}

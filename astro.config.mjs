@@ -64,9 +64,25 @@ export default defineConfig({
         "https://casapatronalto.com/",
         "https://casapatronalto.com/activities/",
         "https://casapatronalto.com/contact-us/",
+        "https://casapatronalto.com/reviews/",
         // "https://casapatronalto.com/docs/", // Removed - internal guest docs not for public indexing
         "https://casapatronalto.com/posts/",
       ],
+      serialize(item) {
+        const url = new URL(item.url).pathname;
+        if (url === "/") {
+          item.priority = 1.0;
+        } else if (["/reviews/", "/activities/", "/contact-us/"].includes(url)) {
+          item.priority = 0.8;
+        } else if (url === "/posts/") {
+          item.priority = 0.7;
+        } else if (url.startsWith("/posts/")) {
+          item.priority = 0.6;
+        } else {
+          item.priority = 0.5;
+        }
+        return item;
+      },
     }),
     partytown({
       config: {

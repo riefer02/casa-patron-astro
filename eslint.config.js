@@ -15,7 +15,13 @@ export default [
 
   // JavaScript/TypeScript files configuration
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    files: ["**/*.{js,jsx,ts,tsx,mjs}"],
+    languageOptions: {
+      globals: {
+        URL: "readonly",
+        console: "readonly",
+      },
+    },
     plugins: {
       "unused-imports": unusedImports,
       "@typescript-eslint": typescript,

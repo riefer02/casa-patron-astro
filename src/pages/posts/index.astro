@@ -13,12 +13,30 @@ const breadcrumbs = [
   { name: "Home", url: "/" },
   { name: "Blog", url: "/posts/" },
 ];
+
+// CollectionPage schema for blog index
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Casa Patron Blog",
+  description:
+    "Stay updated with the latest news, updates, and insights about Casa Patron vacation rental in Alto, NM",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: sortedPosts.slice(0, 10).map((post, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `https://casapatronalto.com/posts/${post.id}/`,
+    })),
+  },
+};
 ---
 
 <BaseLayout
   title="Casa Patron Blog - Latest News & Updates"
   description="Stay updated with the latest news, updates, and insights about Casa Patron vacation rental in Alto, NM"
   keywords={["casa patron", "blog", "vacation rental", "alto nm", "news"]}
+  schemaMarkup={blogSchema}
   breadcrumbs={breadcrumbs}
 >
   <div class="max-w-4xl mx-auto">

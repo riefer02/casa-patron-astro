@@ -3,6 +3,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import JumboPanel from "../components/JumboPanel.astro";
 import ImageGallery from "../components/ImageGallery.astro";
 import Spacer from "../components/Spacer.astro";
+import { reviews, platformRatings } from "../content/reviews/reviews.ts";
+
+const featuredReviews = reviews.filter((r) => r.featured);
+
+// Compute aggregate rating from platform data (only 5-star scale platforms)
+const fiveStarPlatforms = platformRatings.filter((p) => p.maxRating === 5);
+const weightedSum = fiveStarPlatforms.reduce((sum, p) => sum + p.rating * p.reviewCount, 0);
+const weightedCount = fiveStarPlatforms.reduce((sum, p) => sum + p.reviewCount, 0);
+const averageRating = Math.round((weightedSum / weightedCount) * 100) / 100;
+const totalReviews = platformRatings.reduce((sum, p) => sum + p.reviewCount, 0);
 
 // Import images
 import casaPatronBirdImg from "../assets/cp-mural.jpg";
@@ -78,8 +88,18 @@ const schemaMarkup = {
     latitude: 33.41047791700064,
     longitude: -105.6845322600749,
   },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: averageRating,
+    bestRating: 5,
+    worstRating: 1,
+    reviewCount: totalReviews,
+  },
   url: "https://casapatronalto.com/",
-  sameAs: ["http://www.instagram.com/casapatronalto"],
+  sameAs: [
+    "http://www.instagram.com/casapatronalto",
+    ...platformRatings.map((p) => p.url),
+  ],
   amenityFeature: [
     "Free parking",
     "Free WiFi",
@@ -280,6 +300,46 @@ const imagesGallery = [
         class="inline-block bg-primary text-grey-neutral font-semibold text-lg px-8 py-4 rounded-lg hover:bg-yellow-400 hover:scale-[1.02] transition-all duration-200 shadow-lg hover:shadow-xl focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
       >
         View All Activities & Attractions
+      </a>
+    </div>
+  </section>
+
+  <Spacer sizeY={1} />
+
+  <!-- Guest Testimonials -->
+  <section aria-label="Guest testimonials">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-grey-neutral">
+        What Our Guests Say
+      </h2>
+      <p class="mt-2 text-gray-500">
+        Rated 4.9/5 by 140+ guests across all platforms
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {
+        featuredReviews.map((review) => (
+          <blockquote class="rounded-2xl border border-gray-100 bg-white p-6 shadow-md">
+            <p class="text-primary text-lg mb-3" aria-label={`${review.rating} out of 5 stars`}>
+              ★★★★★
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              &ldquo;{review.text}&rdquo;
+            </p>
+            <footer>
+              <cite class="not-italic font-bold text-grey-neutral">{review.author}</cite>
+              <p class="text-sm text-gray-500">{review.date}</p>
+            </footer>
+          </blockquote>
+        ))
+      }
+    </div>
+    <div class="text-center mt-8">
+      <a
+        href="/reviews/"
+        class="inline-block text-secondary font-semibold text-lg hover:text-tertiary transition-colors underline underline-offset-4"
+      >
+        See All Reviews &rarr;
       </a>
     </div>
   </section>
